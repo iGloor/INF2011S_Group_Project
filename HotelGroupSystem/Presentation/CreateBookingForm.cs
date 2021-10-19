@@ -16,6 +16,7 @@ namespace HotelGroupSystem
     public partial class HomePageForm : Form
     {
         #region Declare Variables
+        AvailabilityCheckForm availabilityCheckForm;
         #endregion
 
         #region Property Methods
@@ -46,7 +47,7 @@ namespace HotelGroupSystem
 
         private void checkGuestBtn_Click(object sender, EventArgs e)
         {
-            //check if guest is is database by using name textbox
+            //check if guest is is database by using id textbox
             //if not in database
             MessageBox.Show("The guest you entered is not in our database");
         }
@@ -54,6 +55,13 @@ namespace HotelGroupSystem
         private void calcAmountBtn_Click(object sender, EventArgs e)
         {
             //Call method to calculate total amount due (rooms * rate)
+        }
+
+        private void checkDatesBtn_Click(object sender, EventArgs e)
+        {
+            //Open availability check form
+            availabilityCheckForm = new AvailabilityCheckForm();
+            availabilityCheckForm.Show();
         }
     }
 }

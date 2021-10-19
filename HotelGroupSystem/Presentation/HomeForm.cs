@@ -17,6 +17,7 @@ namespace HotelGroupSystem.Presentation
         #region Declare Variables
         UpdateBookingForm updateBookingForm;
         HomePageForm createBookingForm;
+        AvailabilityCheckForm availabilityCheckForm;
         #endregion
 
         #region Property Methods
@@ -26,9 +27,7 @@ namespace HotelGroupSystem.Presentation
         public HomeForm()
         {
             InitializeComponent();
-            //Call hide calendar method
-            HideCalendar();
-            
+                       
         }
         #endregion
 
@@ -37,22 +36,10 @@ namespace HotelGroupSystem.Presentation
 
         #region Utility Methods
 
-        private void ShowCalendar()
-        {
-            checkLabel.Show();
-            dateTimePicker1.Show();
-            availableSummary.Show();
-            checkBtn.Show();
-        }
+        
 
-        private void HideCalendar()
-        {
-            //Hide the following
-            checkLabel.Hide();
-            dateTimePicker1.Hide();
-            availableSummary.Hide();
-            checkBtn.Hide();
-        }
+      
+      
         #endregion
 
         private void updateBookingToolStripMenuItem_Click(object sender, EventArgs e)
@@ -71,8 +58,19 @@ namespace HotelGroupSystem.Presentation
 
         private void availabilityCheckToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Show Calendar method
-            ShowCalendar();
+            //Open Availability form
+            availabilityCheckForm = new AvailabilityCheckForm();
+            availabilityCheckForm.Show();
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+
+        }
+
+        private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+        {
+
         }
     }
 }
