@@ -35,40 +35,36 @@ namespace HotelGroupSystem.Presentation
             this.refNumberTxt = new System.Windows.Forms.TextBox();
             this.bookDetailsLabel = new System.Windows.Forms.Label();
             this.feedbackLabel = new System.Windows.Forms.Label();
-            this.nameLabel = new System.Windows.Forms.Label();
-            this.phoneLabel = new System.Windows.Forms.Label();
             this.roomLabel = new System.Windows.Forms.Label();
             this.rateLabel = new System.Windows.Forms.Label();
-            this.dateLabel = new System.Windows.Forms.Label();
+            this.checkInLabel = new System.Windows.Forms.Label();
             this.totalLabel = new System.Windows.Forms.Label();
-            this.gDetailsLabel = new System.Windows.Forms.Label();
-            this.billDetailsLabel = new System.Windows.Forms.Label();
             this.bDetailsUpdateBtn = new System.Windows.Forms.Button();
-            this.saveAllBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
-            this.emailLabel = new System.Windows.Forms.Label();
-            this.addressLabel = new System.Windows.Forms.Label();
-            this.cardNoLabel = new System.Windows.Forms.Label();
-            this.bankLabel = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.roomTxt = new System.Windows.Forms.TextBox();
             this.rateTxt = new System.Windows.Forms.TextBox();
-            this.dateTxt = new System.Windows.Forms.TextBox();
+            this.checkInTxt = new System.Windows.Forms.TextBox();
             this.totalTxt = new System.Windows.Forms.TextBox();
-            this.phoneTxt = new System.Windows.Forms.TextBox();
-            this.emailTxt = new System.Windows.Forms.TextBox();
+            this.checkOutTxt = new System.Windows.Forms.TextBox();
+            this.checkOutLabel = new System.Windows.Forms.Label();
+            this.nameLabel = new System.Windows.Forms.Label();
             this.nameTxt = new System.Windows.Forms.TextBox();
-            this.addressTxt = new System.Windows.Forms.TextBox();
-            this.bankTxt = new System.Windows.Forms.TextBox();
-            this.cardNoTxt = new System.Windows.Forms.TextBox();
+            this.idTxt = new System.Windows.Forms.TextBox();
+            this.idLabel = new System.Windows.Forms.Label();
+            this.gDetailsLabel = new System.Windows.Forms.Label();
+            this.checkDatesBtn = new System.Windows.Forms.Button();
+            this.calculateAmountBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // checkRefNoBtn
             // 
-            this.checkRefNoBtn.Location = new System.Drawing.Point(85, 69);
+            this.checkRefNoBtn.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkRefNoBtn.Location = new System.Drawing.Point(85, 82);
+            this.checkRefNoBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkRefNoBtn.Name = "checkRefNoBtn";
-            this.checkRefNoBtn.Size = new System.Drawing.Size(242, 30);
+            this.checkRefNoBtn.Size = new System.Drawing.Size(242, 36);
             this.checkRefNoBtn.TabIndex = 0;
             this.checkRefNoBtn.Text = "Check Referencce Number";
             this.checkRefNoBtn.UseVisualStyleBackColor = true;
@@ -77,287 +73,254 @@ namespace HotelGroupSystem.Presentation
             // refNoLabel
             // 
             this.refNoLabel.AutoSize = true;
-            this.refNoLabel.Location = new System.Drawing.Point(12, 25);
+            this.refNoLabel.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refNoLabel.Location = new System.Drawing.Point(12, 30);
             this.refNoLabel.Name = "refNoLabel";
-            this.refNoLabel.Size = new System.Drawing.Size(183, 17);
+            this.refNoLabel.Size = new System.Drawing.Size(203, 19);
             this.refNoLabel.TabIndex = 1;
             this.refNoLabel.Text = "Booking Reference Number";
             // 
             // refNumberTxt
             // 
-            this.refNumberTxt.Location = new System.Drawing.Point(246, 25);
+            this.refNumberTxt.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refNumberTxt.Location = new System.Drawing.Point(246, 30);
+            this.refNumberTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.refNumberTxt.Name = "refNumberTxt";
-            this.refNumberTxt.Size = new System.Drawing.Size(142, 22);
+            this.refNumberTxt.Size = new System.Drawing.Size(142, 25);
             this.refNumberTxt.TabIndex = 2;
             // 
             // bookDetailsLabel
             // 
             this.bookDetailsLabel.AutoSize = true;
-            this.bookDetailsLabel.Location = new System.Drawing.Point(22, 103);
+            this.bookDetailsLabel.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bookDetailsLabel.Location = new System.Drawing.Point(11, 267);
             this.bookDetailsLabel.Name = "bookDetailsLabel";
-            this.bookDetailsLabel.Size = new System.Drawing.Size(106, 17);
+            this.bookDetailsLabel.Size = new System.Drawing.Size(123, 19);
             this.bookDetailsLabel.TabIndex = 3;
-            this.bookDetailsLabel.Text = "Booking Details";
+            this.bookDetailsLabel.Text = "Booking Details:";
             // 
             // feedbackLabel
             // 
             this.feedbackLabel.AutoSize = true;
-            this.feedbackLabel.Location = new System.Drawing.Point(22, 69);
+            this.feedbackLabel.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.feedbackLabel.Location = new System.Drawing.Point(22, 82);
             this.feedbackLabel.Name = "feedbackLabel";
-            this.feedbackLabel.Size = new System.Drawing.Size(209, 17);
+            this.feedbackLabel.Size = new System.Drawing.Size(222, 20);
             this.feedbackLabel.TabIndex = 4;
             this.feedbackLabel.Text = "Booking for reference number...";
-            // 
-            // nameLabel
-            // 
-            this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(22, 263);
-            this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(45, 17);
-            this.nameLabel.TabIndex = 5;
-            this.nameLabel.Text = "Name";
-            // 
-            // phoneLabel
-            // 
-            this.phoneLabel.AutoSize = true;
-            this.phoneLabel.Location = new System.Drawing.Point(373, 263);
-            this.phoneLabel.Name = "phoneLabel";
-            this.phoneLabel.Size = new System.Drawing.Size(49, 17);
-            this.phoneLabel.TabIndex = 6;
-            this.phoneLabel.Text = "Phone";
             // 
             // roomLabel
             // 
             this.roomLabel.AutoSize = true;
-            this.roomLabel.Location = new System.Drawing.Point(373, 144);
+            this.roomLabel.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roomLabel.Location = new System.Drawing.Point(333, 314);
             this.roomLabel.Name = "roomLabel";
-            this.roomLabel.Size = new System.Drawing.Size(52, 17);
+            this.roomLabel.Size = new System.Drawing.Size(55, 20);
             this.roomLabel.TabIndex = 7;
             this.roomLabel.Text = "Rooms";
             // 
             // rateLabel
             // 
             this.rateLabel.AutoSize = true;
-            this.rateLabel.Location = new System.Drawing.Point(373, 183);
+            this.rateLabel.Location = new System.Drawing.Point(563, 309);
             this.rateLabel.Name = "rateLabel";
-            this.rateLabel.Size = new System.Drawing.Size(79, 17);
+            this.rateLabel.Size = new System.Drawing.Size(83, 20);
             this.rateLabel.TabIndex = 8;
             this.rateLabel.Text = "Room Rate";
             // 
-            // dateLabel
+            // checkInLabel
             // 
-            this.dateLabel.AutoSize = true;
-            this.dateLabel.Location = new System.Drawing.Point(22, 144);
-            this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(38, 17);
-            this.dateLabel.TabIndex = 9;
-            this.dateLabel.Text = "Date";
+            this.checkInLabel.AutoSize = true;
+            this.checkInLabel.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkInLabel.Location = new System.Drawing.Point(22, 314);
+            this.checkInLabel.Name = "checkInLabel";
+            this.checkInLabel.Size = new System.Drawing.Size(73, 20);
+            this.checkInLabel.TabIndex = 9;
+            this.checkInLabel.Text = "Check-in ";
             // 
             // totalLabel
             // 
             this.totalLabel.AutoSize = true;
-            this.totalLabel.Location = new System.Drawing.Point(25, 182);
+            this.totalLabel.Location = new System.Drawing.Point(286, 359);
             this.totalLabel.Name = "totalLabel";
-            this.totalLabel.Size = new System.Drawing.Size(92, 17);
+            this.totalLabel.Size = new System.Drawing.Size(102, 20);
             this.totalLabel.TabIndex = 10;
             this.totalLabel.Text = "Total Amount";
             // 
-            // gDetailsLabel
-            // 
-            this.gDetailsLabel.AutoSize = true;
-            this.gDetailsLabel.Location = new System.Drawing.Point(22, 220);
-            this.gDetailsLabel.Name = "gDetailsLabel";
-            this.gDetailsLabel.Size = new System.Drawing.Size(93, 17);
-            this.gDetailsLabel.TabIndex = 11;
-            this.gDetailsLabel.Text = "Guest Details";
-            // 
-            // billDetailsLabel
-            // 
-            this.billDetailsLabel.AutoSize = true;
-            this.billDetailsLabel.Location = new System.Drawing.Point(25, 335);
-            this.billDetailsLabel.Name = "billDetailsLabel";
-            this.billDetailsLabel.Size = new System.Drawing.Size(92, 17);
-            this.billDetailsLabel.TabIndex = 12;
-            this.billDetailsLabel.Text = "Billing Details";
-            // 
             // bDetailsUpdateBtn
             // 
-            this.bDetailsUpdateBtn.Location = new System.Drawing.Point(15, 456);
+            this.bDetailsUpdateBtn.Location = new System.Drawing.Point(26, 490);
+            this.bDetailsUpdateBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bDetailsUpdateBtn.Name = "bDetailsUpdateBtn";
-            this.bDetailsUpdateBtn.Size = new System.Drawing.Size(174, 23);
+            this.bDetailsUpdateBtn.Size = new System.Drawing.Size(174, 27);
             this.bDetailsUpdateBtn.TabIndex = 13;
             this.bDetailsUpdateBtn.Text = "Update Booking Details";
             this.bDetailsUpdateBtn.UseVisualStyleBackColor = true;
             // 
-            // saveAllBtn
-            // 
-            this.saveAllBtn.Location = new System.Drawing.Point(219, 456);
-            this.saveAllBtn.Name = "saveAllBtn";
-            this.saveAllBtn.Size = new System.Drawing.Size(206, 23);
-            this.saveAllBtn.TabIndex = 14;
-            this.saveAllBtn.Text = "Save Updated Booking";
-            this.saveAllBtn.UseVisualStyleBackColor = true;
-            // 
             // deleteBtn
             // 
-            this.deleteBtn.Location = new System.Drawing.Point(454, 455);
+            this.deleteBtn.Location = new System.Drawing.Point(260, 490);
+            this.deleteBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(155, 23);
+            this.deleteBtn.Size = new System.Drawing.Size(174, 27);
             this.deleteBtn.TabIndex = 15;
             this.deleteBtn.Text = "Delete Booking";
             this.deleteBtn.UseVisualStyleBackColor = true;
             // 
             // cancelBtn
             // 
-            this.cancelBtn.Location = new System.Drawing.Point(642, 455);
+            this.cancelBtn.Location = new System.Drawing.Point(522, 490);
+            this.cancelBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(119, 23);
+            this.cancelBtn.Size = new System.Drawing.Size(174, 27);
             this.cancelBtn.TabIndex = 16;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
             // 
-            // emailLabel
-            // 
-            this.emailLabel.AutoSize = true;
-            this.emailLabel.Location = new System.Drawing.Point(376, 298);
-            this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(42, 17);
-            this.emailLabel.TabIndex = 17;
-            this.emailLabel.Text = "Email";
-            // 
-            // addressLabel
-            // 
-            this.addressLabel.AutoSize = true;
-            this.addressLabel.Location = new System.Drawing.Point(25, 298);
-            this.addressLabel.Name = "addressLabel";
-            this.addressLabel.Size = new System.Drawing.Size(60, 17);
-            this.addressLabel.TabIndex = 18;
-            this.addressLabel.Text = "Address";
-            // 
-            // cardNoLabel
-            // 
-            this.cardNoLabel.AutoSize = true;
-            this.cardNoLabel.Location = new System.Drawing.Point(28, 368);
-            this.cardNoLabel.Name = "cardNoLabel";
-            this.cardNoLabel.Size = new System.Drawing.Size(133, 17);
-            this.cardNoLabel.TabIndex = 19;
-            this.cardNoLabel.Text = "Credit Card Number";
-            // 
-            // bankLabel
-            // 
-            this.bankLabel.AutoSize = true;
-            this.bankLabel.Location = new System.Drawing.Point(31, 402);
-            this.bankLabel.Name = "bankLabel";
-            this.bankLabel.Size = new System.Drawing.Size(40, 17);
-            this.bankLabel.TabIndex = 20;
-            this.bankLabel.Text = "Bank";
-            // 
             // roomTxt
             // 
-            this.roomTxt.Location = new System.Drawing.Point(482, 144);
+            this.roomTxt.Location = new System.Drawing.Point(419, 309);
+            this.roomTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.roomTxt.Name = "roomTxt";
-            this.roomTxt.Size = new System.Drawing.Size(100, 22);
+            this.roomTxt.Size = new System.Drawing.Size(100, 25);
             this.roomTxt.TabIndex = 21;
             // 
             // rateTxt
             // 
-            this.rateTxt.Location = new System.Drawing.Point(482, 183);
+            this.rateTxt.Location = new System.Drawing.Point(661, 309);
+            this.rateTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rateTxt.Name = "rateTxt";
-            this.rateTxt.Size = new System.Drawing.Size(100, 22);
+            this.rateTxt.Size = new System.Drawing.Size(100, 25);
             this.rateTxt.TabIndex = 22;
             // 
-            // dateTxt
+            // checkInTxt
             // 
-            this.dateTxt.Location = new System.Drawing.Point(144, 144);
-            this.dateTxt.Name = "dateTxt";
-            this.dateTxt.Size = new System.Drawing.Size(189, 22);
-            this.dateTxt.TabIndex = 23;
+            this.checkInTxt.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkInTxt.Location = new System.Drawing.Point(144, 309);
+            this.checkInTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkInTxt.Name = "checkInTxt";
+            this.checkInTxt.Size = new System.Drawing.Size(116, 25);
+            this.checkInTxt.TabIndex = 23;
             // 
             // totalTxt
             // 
-            this.totalTxt.Location = new System.Drawing.Point(144, 183);
+            this.totalTxt.Location = new System.Drawing.Point(419, 356);
+            this.totalTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.totalTxt.Name = "totalTxt";
-            this.totalTxt.Size = new System.Drawing.Size(158, 22);
+            this.totalTxt.Size = new System.Drawing.Size(158, 25);
             this.totalTxt.TabIndex = 24;
             // 
-            // phoneTxt
+            // checkOutTxt
             // 
-            this.phoneTxt.Location = new System.Drawing.Point(482, 260);
-            this.phoneTxt.Name = "phoneTxt";
-            this.phoneTxt.Size = new System.Drawing.Size(100, 22);
-            this.phoneTxt.TabIndex = 25;
+            this.checkOutTxt.Location = new System.Drawing.Point(144, 354);
+            this.checkOutTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkOutTxt.Name = "checkOutTxt";
+            this.checkOutTxt.Size = new System.Drawing.Size(116, 25);
+            this.checkOutTxt.TabIndex = 31;
             // 
-            // emailTxt
+            // checkOutLabel
             // 
-            this.emailTxt.Location = new System.Drawing.Point(482, 298);
-            this.emailTxt.Name = "emailTxt";
-            this.emailTxt.Size = new System.Drawing.Size(100, 22);
-            this.emailTxt.TabIndex = 26;
+            this.checkOutLabel.AutoSize = true;
+            this.checkOutLabel.Location = new System.Drawing.Point(24, 359);
+            this.checkOutLabel.Name = "checkOutLabel";
+            this.checkOutLabel.Size = new System.Drawing.Size(79, 20);
+            this.checkOutLabel.TabIndex = 32;
+            this.checkOutLabel.Text = "Check-out";
+            // 
+            // nameLabel
+            // 
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Location = new System.Drawing.Point(35, 216);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(49, 20);
+            this.nameLabel.TabIndex = 5;
+            this.nameLabel.Text = "Name";
             // 
             // nameTxt
             // 
-            this.nameTxt.Location = new System.Drawing.Point(144, 258);
+            this.nameTxt.Location = new System.Drawing.Point(144, 213);
+            this.nameTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nameTxt.Name = "nameTxt";
-            this.nameTxt.Size = new System.Drawing.Size(189, 22);
+            this.nameTxt.Size = new System.Drawing.Size(228, 25);
             this.nameTxt.TabIndex = 27;
             // 
-            // addressTxt
+            // idTxt
             // 
-            this.addressTxt.Location = new System.Drawing.Point(144, 297);
-            this.addressTxt.Name = "addressTxt";
-            this.addressTxt.Size = new System.Drawing.Size(100, 22);
-            this.addressTxt.TabIndex = 28;
+            this.idTxt.Location = new System.Drawing.Point(144, 171);
+            this.idTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.idTxt.Name = "idTxt";
+            this.idTxt.Size = new System.Drawing.Size(155, 25);
+            this.idTxt.TabIndex = 34;
             // 
-            // bankTxt
+            // idLabel
             // 
-            this.bankTxt.Location = new System.Drawing.Point(190, 402);
-            this.bankTxt.Name = "bankTxt";
-            this.bankTxt.Size = new System.Drawing.Size(198, 22);
-            this.bankTxt.TabIndex = 29;
+            this.idLabel.AutoSize = true;
+            this.idLabel.Location = new System.Drawing.Point(35, 171);
+            this.idLabel.Name = "idLabel";
+            this.idLabel.Size = new System.Drawing.Size(24, 20);
+            this.idLabel.TabIndex = 33;
+            this.idLabel.Text = "ID";
             // 
-            // cardNoTxt
+            // gDetailsLabel
             // 
-            this.cardNoTxt.Location = new System.Drawing.Point(190, 365);
-            this.cardNoTxt.Name = "cardNoTxt";
-            this.cardNoTxt.Size = new System.Drawing.Size(198, 22);
-            this.cardNoTxt.TabIndex = 30;
+            this.gDetailsLabel.AutoSize = true;
+            this.gDetailsLabel.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gDetailsLabel.Location = new System.Drawing.Point(24, 131);
+            this.gDetailsLabel.Name = "gDetailsLabel";
+            this.gDetailsLabel.Size = new System.Drawing.Size(106, 19);
+            this.gDetailsLabel.TabIndex = 11;
+            this.gDetailsLabel.Text = "Guest Details:";
+            // 
+            // checkDatesBtn
+            // 
+            this.checkDatesBtn.Location = new System.Drawing.Point(144, 402);
+            this.checkDatesBtn.Name = "checkDatesBtn";
+            this.checkDatesBtn.Size = new System.Drawing.Size(147, 28);
+            this.checkDatesBtn.TabIndex = 35;
+            this.checkDatesBtn.Text = "Check Dates";
+            this.checkDatesBtn.UseVisualStyleBackColor = true;
+            // 
+            // calculateAmountBtn
+            // 
+            this.calculateAmountBtn.Location = new System.Drawing.Point(419, 402);
+            this.calculateAmountBtn.Name = "calculateAmountBtn";
+            this.calculateAmountBtn.Size = new System.Drawing.Size(158, 28);
+            this.calculateAmountBtn.TabIndex = 36;
+            this.calculateAmountBtn.Text = "Calculate Amount";
+            this.calculateAmountBtn.UseVisualStyleBackColor = true;
             // 
             // UpdateBookingForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 514);
-            this.Controls.Add(this.cardNoTxt);
-            this.Controls.Add(this.bankTxt);
-            this.Controls.Add(this.addressTxt);
+            this.ClientSize = new System.Drawing.Size(800, 610);
+            this.Controls.Add(this.calculateAmountBtn);
+            this.Controls.Add(this.checkDatesBtn);
+            this.Controls.Add(this.idTxt);
+            this.Controls.Add(this.idLabel);
+            this.Controls.Add(this.checkOutLabel);
+            this.Controls.Add(this.checkOutTxt);
             this.Controls.Add(this.nameTxt);
-            this.Controls.Add(this.emailTxt);
-            this.Controls.Add(this.phoneTxt);
             this.Controls.Add(this.totalTxt);
-            this.Controls.Add(this.dateTxt);
+            this.Controls.Add(this.checkInTxt);
             this.Controls.Add(this.rateTxt);
             this.Controls.Add(this.roomTxt);
-            this.Controls.Add(this.bankLabel);
-            this.Controls.Add(this.cardNoLabel);
-            this.Controls.Add(this.addressLabel);
-            this.Controls.Add(this.emailLabel);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.deleteBtn);
-            this.Controls.Add(this.saveAllBtn);
             this.Controls.Add(this.bDetailsUpdateBtn);
-            this.Controls.Add(this.billDetailsLabel);
             this.Controls.Add(this.gDetailsLabel);
             this.Controls.Add(this.totalLabel);
-            this.Controls.Add(this.dateLabel);
+            this.Controls.Add(this.checkInLabel);
             this.Controls.Add(this.rateLabel);
             this.Controls.Add(this.roomLabel);
-            this.Controls.Add(this.phoneLabel);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.feedbackLabel);
             this.Controls.Add(this.bookDetailsLabel);
             this.Controls.Add(this.refNumberTxt);
             this.Controls.Add(this.refNoLabel);
             this.Controls.Add(this.checkRefNoBtn);
+            this.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UpdateBookingForm";
             this.Text = "Update Booking";
             this.Load += new System.EventHandler(this.UpdateBookingForm_Load);
@@ -373,32 +336,26 @@ namespace HotelGroupSystem.Presentation
         private System.Windows.Forms.TextBox refNumberTxt;
         private System.Windows.Forms.Label bookDetailsLabel;
         private System.Windows.Forms.Label feedbackLabel;
-        private System.Windows.Forms.Label nameLabel;
-        private System.Windows.Forms.Label phoneLabel;
         private System.Windows.Forms.Label roomLabel;
         private System.Windows.Forms.Label rateLabel;
-        private System.Windows.Forms.Label dateLabel;
+        private System.Windows.Forms.Label checkInLabel;
         private System.Windows.Forms.Label totalLabel;
-        private System.Windows.Forms.Label gDetailsLabel;
-        private System.Windows.Forms.Label billDetailsLabel;
         private System.Windows.Forms.Button bDetailsUpdateBtn;
-        private System.Windows.Forms.Button saveAllBtn;
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.Button cancelBtn;
-        private System.Windows.Forms.Label emailLabel;
-        private System.Windows.Forms.Label addressLabel;
-        private System.Windows.Forms.Label cardNoLabel;
-        private System.Windows.Forms.Label bankLabel;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.TextBox roomTxt;
         private System.Windows.Forms.TextBox rateTxt;
-        private System.Windows.Forms.TextBox dateTxt;
+        private System.Windows.Forms.TextBox checkInTxt;
         private System.Windows.Forms.TextBox totalTxt;
-        private System.Windows.Forms.TextBox phoneTxt;
-        private System.Windows.Forms.TextBox emailTxt;
+        private System.Windows.Forms.TextBox checkOutTxt;
+        private System.Windows.Forms.Label checkOutLabel;
+        private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.TextBox nameTxt;
-        private System.Windows.Forms.TextBox addressTxt;
-        private System.Windows.Forms.TextBox bankTxt;
-        private System.Windows.Forms.TextBox cardNoTxt;
+        private System.Windows.Forms.TextBox idTxt;
+        private System.Windows.Forms.Label idLabel;
+        private System.Windows.Forms.Label gDetailsLabel;
+        private System.Windows.Forms.Button checkDatesBtn;
+        private System.Windows.Forms.Button calculateAmountBtn;
     }
 }
