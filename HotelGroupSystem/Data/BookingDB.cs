@@ -59,7 +59,7 @@ namespace HotelGroupSystem.Data
                     //booking.GuestID = Convert.ToString(myRow["ID"]).TrimEnd();
 
                     //Obtain each booking attribute from the specific field in the row in the table
-                    booking.BookingRef = Convert.ToString(myRow["BookingReference"]).TrimEnd();
+                  //  booking.BookingRef = Convert.ToString(myRow["BookingReference"]).TrimEnd();
                     booking.CheckInDate = Convert.ToString(myRow["CheckInDate"]).TrimEnd();
                     booking.CheckOutDate = Convert.ToString(myRow["CheckOutDate"]).TrimEnd();
                     booking.RoomsBooked = Convert.ToInt32(myRow["RoomsBooked"]);
@@ -80,7 +80,7 @@ namespace HotelGroupSystem.Data
             if (operation == DB.DBOperation.Add)
             {
                 aRow["BookingReference"] = aBooking.BookingRef;  //NOTE square brackets to indicate index of collections of fields in row.
-                aRow["GuestID"] = aBooking.GuestID;
+               // aRow["GuestID"] = aBooking.GuestID;
             }
 
             aRow["RoomsBooked"] = aBooking.RoomsBooked;
@@ -103,7 +103,7 @@ namespace HotelGroupSystem.Data
                 if (!(myRow.RowState == DataRowState.Deleted))
                 {
                     //check if booking id equal to what we are looking for
-                    if (aBooking.BookingRef == Convert.ToString(dsMain.Tables[table].Rows[rowIndex]["BookingReference"]))
+                 //   if (aBooking.BookingRef == Convert.ToString(dsMain.Tables[table].Rows[rowIndex]["BookingReference"]))
                     {
                         returnValue = rowIndex;
                     }

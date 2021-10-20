@@ -36,6 +36,9 @@ namespace HotelGroupSystem.Presentation
             this.checkBtn = new System.Windows.Forms.Button();
             this.newBookingBtn = new System.Windows.Forms.Button();
             this.updateBookingBtn = new System.Windows.Forms.Button();
+            this.checkInLabel = new System.Windows.Forms.Label();
+            this.checkOutLabel = new System.Windows.Forms.Label();
+            this.feedbackLabel2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // monthCalendar1
@@ -63,11 +66,11 @@ namespace HotelGroupSystem.Presentation
             // feedbackLabel
             // 
             this.feedbackLabel.AutoSize = true;
-            this.feedbackLabel.Location = new System.Drawing.Point(388, 43);
+            this.feedbackLabel.Location = new System.Drawing.Point(356, 26);
             this.feedbackLabel.Name = "feedbackLabel";
-            this.feedbackLabel.Size = new System.Drawing.Size(66, 17);
+            this.feedbackLabel.Size = new System.Drawing.Size(96, 17);
             this.feedbackLabel.TabIndex = 2;
-            this.feedbackLabel.Text = "feedback";
+            this.feedbackLabel.Text = "For the dates:";
             // 
             // summaryView
             // 
@@ -108,11 +111,41 @@ namespace HotelGroupSystem.Presentation
             this.updateBookingBtn.UseVisualStyleBackColor = true;
             this.updateBookingBtn.Click += new System.EventHandler(this.updateBookingBtn_Click);
             // 
+            // checkInLabel
+            // 
+            this.checkInLabel.AutoSize = true;
+            this.checkInLabel.Location = new System.Drawing.Point(356, 56);
+            this.checkInLabel.Name = "checkInLabel";
+            this.checkInLabel.Size = new System.Drawing.Size(46, 17);
+            this.checkInLabel.TabIndex = 7;
+            this.checkInLabel.Text = "label1";
+            // 
+            // checkOutLabel
+            // 
+            this.checkOutLabel.AutoSize = true;
+            this.checkOutLabel.Location = new System.Drawing.Point(512, 56);
+            this.checkOutLabel.Name = "checkOutLabel";
+            this.checkOutLabel.Size = new System.Drawing.Size(103, 17);
+            this.checkOutLabel.TabIndex = 8;
+            this.checkOutLabel.Text = "checkOutLabel";
+            // 
+            // feedbackLabel2
+            // 
+            this.feedbackLabel2.AutoSize = true;
+            this.feedbackLabel2.Location = new System.Drawing.Point(450, 56);
+            this.feedbackLabel2.Name = "feedbackLabel2";
+            this.feedbackLabel2.Size = new System.Drawing.Size(20, 17);
+            this.feedbackLabel2.TabIndex = 9;
+            this.feedbackLabel2.Text = "to";
+            // 
             // AvailabilityCheckForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.feedbackLabel2);
+            this.Controls.Add(this.checkOutLabel);
+            this.Controls.Add(this.checkInLabel);
             this.Controls.Add(this.updateBookingBtn);
             this.Controls.Add(this.newBookingBtn);
             this.Controls.Add(this.checkBtn);
@@ -122,6 +155,7 @@ namespace HotelGroupSystem.Presentation
             this.Controls.Add(this.monthCalendar1);
             this.Name = "AvailabilityCheckForm";
             this.Text = "Availability Check";
+            this.Load += new System.EventHandler(this.AvailabilityCheckForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,5 +170,8 @@ namespace HotelGroupSystem.Presentation
         private System.Windows.Forms.Button checkBtn;
         private System.Windows.Forms.Button newBookingBtn;
         private System.Windows.Forms.Button updateBookingBtn;
+        private System.Windows.Forms.Label checkInLabel;
+        private System.Windows.Forms.Label checkOutLabel;
+        private System.Windows.Forms.Label feedbackLabel2;
     }
 }

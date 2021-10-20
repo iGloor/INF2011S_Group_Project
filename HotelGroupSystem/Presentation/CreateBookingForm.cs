@@ -17,6 +17,9 @@ namespace HotelGroupSystem
     {
         #region Declare Variables
         AvailabilityCheckForm availabilityCheckForm;
+        HomePageForm bookingForm;
+
+        
         #endregion
 
         #region Property Methods
@@ -26,6 +29,8 @@ namespace HotelGroupSystem
         public HomePageForm()
         {
             InitializeComponent();
+            //booking controller
+            //guest controller
         }
         #endregion
 
@@ -62,6 +67,20 @@ namespace HotelGroupSystem
             //Open availability check form
             availabilityCheckForm = new AvailabilityCheckForm();
             availabilityCheckForm.Show();
+
+        }
+
+        private void HomePageForm_Load(object sender, EventArgs e)
+        {
+            checkInTxt.Text = AvailabilityCheckForm.setValueForCheckIn;
+            checkOutTxt.Text = AvailabilityCheckForm.setValueForCheckOut;
+
+
+        }
+
+        private void HomePageForm_Activated(object sender, EventArgs e)
+        {
+
         }
     }
 }

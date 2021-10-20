@@ -25,31 +25,82 @@ namespace HotelGroupSystem.Presentation
         //Upon closing, date and max room is passed back to relevant form
 
         #region Declare Variables
+
         UpdateBookingForm updateBookingForm;
         HomePageForm createBookingForm;
+
+        //Pass info to form 2
+        public static string setValueForCheckIn = "";
+        public static string setValueForCheckOut = "";
+        
         #endregion
 
+        #region Constructor
         public AvailabilityCheckForm()
         {
             InitializeComponent();
+            //Hide feedback
 
             monthCalendar1.DateSelected += monthCalendar1_DateSelected;
             monthCalendar1.DateChanged += monthCalendar1_DateChanged;
         }
+        #endregion
+
+        #region Methods
+
+        public void HideFeedback()
+        {
+            feedbackLabel.Hide();
+            feedbackLabel2.Hide();
+            checkInLabel.Hide();
+            checkOutLabel.Hide();
+            newBookingBtn.Hide();
+            updateBookingBtn.Hide();
+        }
+
+        public void ShowFeedback()
+        {
+            feedbackLabel.Show();
+            feedbackLabel2.Show();
+            checkInLabel.Show();
+            checkOutLabel.Show();
+            newBookingBtn.Show();
+            updateBookingBtn.Show();
+        }
 
         private void FindDates()
         {
-            string date1 = monthCalendar1.SelectionStart.Date.ToShortDateString();
-            string date2 = monthCalendar1.SelectionEnd.Date.ToShortDateString();
+            setValueForCheckIn = monthCalendar1.SelectionStart.Date.ToShortDateString();
+            setValueForCheckOut = monthCalendar1.SelectionEnd.Date.ToShortDateString();
 
-            //if any rooms are available
-            feedbackLabel.Show();
-            feedbackLabel.Text = ("The following rooms are available from the " + date1 + " - " + date2);
+            checkInLabel.Text = setValueForCheckIn;
+            checkOutLabel.Text = setValueForCheckOut;
 
             //if no rooms are available
             // summaryLabel.Text = ("No rooms are available between " + date1 + " to " + date2);
         }
 
+        private bool CheckFormOpen()
+        {
+            FormCollection fc = Application.OpenForms;
+            foreach (Form frm in fc)
+            {
+                if (frm == createBookingForm)
+                {
+                    return true; 
+                }
+            }
+            return false;
+        }
+
+        public void sendDates2NewBookingForm()
+        {
+            //if no newBookingForm open
+
+
+        }
+
+        #endregion
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
         }
@@ -61,26 +112,59 @@ namespace HotelGroupSystem.Presentation
         private void checkBtn_Click(object sender, EventArgs e)
         {
             FindDates();
+            ShowFeedback();
         }
 
         private void newBookingBtn_Click(object sender, EventArgs e)
         {
-            //Open new booking form
-            createBookingForm = new HomePageForm();
-            createBookingForm.Show();
+            
 
-            //Close this form
-            this.Close();
+            if(Application.OpenForms.OfType<HomePageForm>().Count() == 1)
+            {
+                setValueForCheckIn = monthCalendar1.SelectionStart.Date.ToShortDateString();
+                setValueForCheckOut = monthCalendar1.SelectionEnd.Date.ToShortDateString();
+
+                createBookingForm.Update();
+                createBookingForm.Refresh();
+                createBookingForm.Focus();
+
+                //Close this form
+                this.Close();
+            }
+            else 
+            {
+                setValueForCheckIn = monthCalendar1.SelectionStart.Date.ToShortDateString();
+                setValueForCheckOut = monthCalendar1.SelectionEnd.Date.ToShortDateString();
+
+                //Open new booking form
+                createBookingForm = new HomePageForm();
+                createBookingForm.Show();
+
+                //Close this form
+                this.Close();
+            }
+           
+
+            
+
         }
 
         private void updateBookingBtn_Click(object sender, EventArgs e)
         {
+            setValueForCheckIn = monthCalendar1.SelectionStart.Date.ToShortDateString();
+            setValueForCheckOut = monthCalendar1.SelectionEnd.Date.ToShortDateString();
+
             //Update new booking form
             updateBookingForm = new UpdateBookingForm();
             updateBookingForm.Show();
 
             //Close this form
             this.Close();
+        }
+
+        private void AvailabilityCheckForm_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

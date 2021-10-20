@@ -59,12 +59,12 @@ namespace HotelGroupSystem.Data
                     guest = new Guest();
 
                     //Obtain each guest attribute from the specific field in the row in the table
-                    guest.getGuestID = Convert.ToInt32(myRow["GuestID"]);
+                   // guest.getGuestID = Convert.ToInt32(myRow["GuestID"]);
                     guest.getName = Convert.ToString(myRow["Name"]).TrimEnd();
 
-                    guest.getPhone = Convert.ToString(myRow["Phone"]).TrimEnd();
-                    guest.getAge = Convert.ToInt32(myRow["Age"]);
-                    guest.getAddress = Convert.ToString(myRow["Address"]).TrimEnd();
+                   // guest.getPhone = Convert.ToString(myRow["Phone"]).TrimEnd();
+                    //guest.getAge = Convert.ToInt32(myRow["Age"]);
+                    //guest.getAddress = Convert.ToString(myRow["Address"]).TrimEnd();
 
                     //add booking to bookings collection
                     guests.Add(guest);
@@ -78,13 +78,13 @@ namespace HotelGroupSystem.Data
 
             if (operation == DB.DBOperation.Add)
             {
-                aRow["GuestID"] = aGuest.getGuestID;  //NOTE square brackets to indicate index of collections of fields in row.
+                //aRow["GuestID"] = aGuest.getGuestID;  //NOTE square brackets to indicate index of collections of fields in row.
             }
 
-            aRow["Name"] = aGuest.getName;
-            aRow["Phone"] = aGuest.getPhone;
-            aRow["Address"] = aGuest.getAddress;
-            aRow["Age"] = aGuest.getAge;
+           // aRow["Name"] = aGuest.getName;
+            //aRow["Phone"] = aGuest.getPhone;
+            //aRow["Address"] = aGuest.getAddress;
+            //aRow["Age"] = aGuest.getAge;
 
         }
 
@@ -100,7 +100,7 @@ namespace HotelGroupSystem.Data
                 if (!(myRow.RowState == DataRowState.Deleted))
                 {
                     //check if guest id equal to what we are looking for
-                    if (aGuest.getGuestID == Convert.ToInt32(dsMain.Tables[table].Rows[rowIndex]["GuestID"]))
+                    //if (aGuest.getGuestID == Convert.ToInt32(dsMain.Tables[table].Rows[rowIndex]["GuestID"]))
                     {
                         returnValue = rowIndex;
                     }

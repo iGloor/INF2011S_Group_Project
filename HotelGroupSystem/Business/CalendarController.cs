@@ -9,30 +9,32 @@ using HotelGroupSystem.Business;
 
 namespace HotelGroupSystem.Business
 {
-    class BookingController
+    class CalendarController
     {
         #region Data Members
-        BookingDB bookingDB;
-        Collection<Booking> bookings;
+        CalendarDB calendarDB;
+        Calendar calendar;
+        Collection<Room> rooms;
         #endregion
 
         #region Properties
-        public Collection<Booking> AllBookings
+        public Collection<Room> AllRooms
         {
             get
             {
-                return bookings;
+                return rooms;
             }
         }
         #endregion
 
         #region Constructor
-        public BookingController()
+        public CalendarController()
         {
-            bookingDB = new BookingDB();
-            bookings = bookingDB.AllBookings;
+            calendarDB = new CalendarDB();
+            calendar = new Calendar();
+            
         }
-        
+
         #endregion
 
         #region Database Communication.
@@ -40,7 +42,7 @@ namespace HotelGroupSystem.Business
         {
             int index = 0;
             //perform a given database operation to the dataset in meory; 
-            bookingDB.DataSetChange(aBooking, operation);
+            calendarDB.DataSetChange(aBooking, operation);
             //perform operations on the collection
             switch (operation)
             {
@@ -75,9 +77,9 @@ namespace HotelGroupSystem.Business
         {
             int index = 0;
             //check if it is the first booking
-           // bool found = (bookings[index].BookingRef == bookRef); 
+            // bool found = (bookings[index].BookingRef == bookRef); 
             int count = bookings.Count;
-           // while (!(found) && (index < bookings.Count - 1))  //if not "this" booking and you are not at the end of the list 
+            // while (!(found) && (index < bookings.Count - 1))  //if not "this" booking and you are not at the end of the list 
             {
                 index = index + 1;
                 //found = (bookings[index].BookingRef == bookRef);   // this will be TRUE if found
@@ -108,4 +110,5 @@ namespace HotelGroupSystem.Business
 
 
     }
+}
 }

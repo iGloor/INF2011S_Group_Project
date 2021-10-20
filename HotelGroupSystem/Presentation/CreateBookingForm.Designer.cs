@@ -61,6 +61,8 @@ namespace HotelGroupSystem
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.checkDatesBtn = new System.Windows.Forms.Button();
+            this.discountCodeLabel = new System.Windows.Forms.Label();
+            this.discountCodeTxt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -76,7 +78,7 @@ namespace HotelGroupSystem
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(312, 41);
+            this.label2.Location = new System.Drawing.Point(292, 41);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 20);
             this.label2.TabIndex = 1;
@@ -85,7 +87,7 @@ namespace HotelGroupSystem
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(627, 41);
+            this.label3.Location = new System.Drawing.Point(580, 41);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 20);
             this.label3.TabIndex = 2;
@@ -103,7 +105,7 @@ namespace HotelGroupSystem
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(312, 79);
+            this.label5.Location = new System.Drawing.Point(580, 79);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(96, 20);
             this.label5.TabIndex = 4;
@@ -185,7 +187,7 @@ namespace HotelGroupSystem
             // 
             // calcAmountBtn
             // 
-            this.calcAmountBtn.Location = new System.Drawing.Point(440, 122);
+            this.calcAmountBtn.Location = new System.Drawing.Point(669, 122);
             this.calcAmountBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.calcAmountBtn.Name = "calcAmountBtn";
             this.calcAmountBtn.Size = new System.Drawing.Size(209, 31);
@@ -228,18 +230,18 @@ namespace HotelGroupSystem
             // 
             // roomTxt
             // 
-            this.roomTxt.Location = new System.Drawing.Point(440, 41);
+            this.roomTxt.Location = new System.Drawing.Point(419, 41);
             this.roomTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.roomTxt.Name = "roomTxt";
-            this.roomTxt.Size = new System.Drawing.Size(115, 25);
+            this.roomTxt.Size = new System.Drawing.Size(125, 25);
             this.roomTxt.TabIndex = 17;
             // 
             // rateTxt
             // 
-            this.rateTxt.Location = new System.Drawing.Point(716, 38);
+            this.rateTxt.Location = new System.Drawing.Point(696, 41);
             this.rateTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rateTxt.Name = "rateTxt";
-            this.rateTxt.Size = new System.Drawing.Size(100, 25);
+            this.rateTxt.Size = new System.Drawing.Size(141, 25);
             this.rateTxt.TabIndex = 18;
             // 
             // checkInTxt
@@ -284,7 +286,7 @@ namespace HotelGroupSystem
             // 
             // totalTxt
             // 
-            this.totalTxt.Location = new System.Drawing.Point(440, 79);
+            this.totalTxt.Location = new System.Drawing.Point(696, 79);
             this.totalTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.totalTxt.Name = "totalTxt";
             this.totalTxt.Size = new System.Drawing.Size(182, 25);
@@ -350,11 +352,29 @@ namespace HotelGroupSystem
             this.checkDatesBtn.UseVisualStyleBackColor = true;
             this.checkDatesBtn.Click += new System.EventHandler(this.checkDatesBtn_Click);
             // 
+            // discountCodeLabel
+            // 
+            this.discountCodeLabel.AutoSize = true;
+            this.discountCodeLabel.Location = new System.Drawing.Point(292, 79);
+            this.discountCodeLabel.Name = "discountCodeLabel";
+            this.discountCodeLabel.Size = new System.Drawing.Size(108, 20);
+            this.discountCodeLabel.TabIndex = 32;
+            this.discountCodeLabel.Text = "Discount Code";
+            // 
+            // discountCodeTxt
+            // 
+            this.discountCodeTxt.Location = new System.Drawing.Point(419, 79);
+            this.discountCodeTxt.Name = "discountCodeTxt";
+            this.discountCodeTxt.Size = new System.Drawing.Size(125, 25);
+            this.discountCodeTxt.TabIndex = 33;
+            // 
             // HomePageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 540);
+            this.Controls.Add(this.discountCodeTxt);
+            this.Controls.Add(this.discountCodeLabel);
             this.Controls.Add(this.checkDatesBtn);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.textBox2);
@@ -391,6 +411,8 @@ namespace HotelGroupSystem
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "HomePageForm";
             this.Text = "Create New Booking";
+            this.Activated += new System.EventHandler(this.HomePageForm_Activated);
+            this.Load += new System.EventHandler(this.HomePageForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -430,6 +452,8 @@ namespace HotelGroupSystem
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button checkDatesBtn;
+        private System.Windows.Forms.Label discountCodeLabel;
+        private System.Windows.Forms.TextBox discountCodeTxt;
     }
 }
 

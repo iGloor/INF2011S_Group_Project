@@ -65,6 +65,8 @@ namespace HotelGroupSystem.Presentation
             bDetailsUpdateBtn.Show();
             cancelBtn.Show();
             deleteBtn.Show();
+            discountCodeLabel.Show();
+            discountCodeTxt.Show();
         }
 
         private void HideFields()

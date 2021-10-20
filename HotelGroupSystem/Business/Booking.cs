@@ -1,36 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HotelGroupSystem.Business;
 
 namespace HotelGroupSystem.Business
 {
     class Booking
     {
         #region Data Members
-        //Guest id
-        private string guestId;
+        //Booking is linked to guest already
+
+        //booking reference
+        private int bookingRef;
 
         //Rooms booked and total amount due
         private int roomsBooked;
         private decimal roomRate;
         private decimal totalDue;
 
+        //Discount
+        public Discount discount;
+
+        //Rooms
+        public Room room;
+        public Collection<Room> rooms;
+
         //Check in and out dates
         private string checkInDate;
         private string checkOutDate;
 
-        //booking reference
-        private string bookingRef;
+        //Billing details
+        private int creditCardNo;
+        private string bankName;
 
         #endregion
 
         #region Property methods
-        
-        public string GuestID
+        public int BookingRef
         {
-            get { return guestId; } //Guest can only be viewed by booking class, set by guest class
+            get { return bookingRef; }
+            set { bookingRef = value; }
         }
 
         public int RoomsBooked
@@ -63,11 +75,18 @@ namespace HotelGroupSystem.Business
             set { checkOutDate = value; }
         }
 
-        public string BookingRef
+        public int CreditCardNo
         {
-            get { return bookingRef; }
-            set { bookingRef = value; }
+            get { return creditCardNo; }
+            set { creditCardNo = value; }
         }
+
+        public string BankName
+        {
+            get { return bankName; }
+            set { bankName = value; }
+        }
+        
         #endregion
 
         #region Constructor
@@ -75,15 +94,17 @@ namespace HotelGroupSystem.Business
         {
 
         }
-        public Booking(string id, int rooms, decimal rate, decimal total, string checkIn, string checkOut)
+        public Booking(int bRef, int rooms, decimal rate, decimal total, Discount discountPercentage, string checkIn, string checkOut, int creditCard, string bName)
         {
-            guestId = id;
+            bookingRef = bRef;
             roomsBooked = rooms;
             roomRate = rate;
             totalDue = total;
+            discount = discountPercentage;
             checkInDate = checkIn;
-            checkOutDate = checkOut;  
-
+            checkOutDate = checkOut;
+            creditCardNo = creditCard;
+            bankName = bName;
         }
         #endregion
     }

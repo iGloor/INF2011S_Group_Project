@@ -49,11 +49,13 @@
     <Compile Include="Business\Booking.cs" />
     <Compile Include="Business\BookingController.cs" />
     <Compile Include="Business\Calendar.cs" />
+    <Compile Include="Business\CalendarController.cs" />
+    <Compile Include="Business\Discount.cs" />
     <Compile Include="Business\Guest.cs" />
     <Compile Include="Business\GuestController.cs" />
     <Compile Include="Business\Room.cs" />
-    <Compile Include="Business\RoomRate.cs" />
     <Compile Include="Data\BookingDB.cs" />
+    <Compile Include="Data\CalendarDB.cs" />
     <Compile Include="Data\DB.cs" />
     <Compile Include="Data\GuestDB.cs" />
     <Compile Include="Presentation\AvailabilityCheckForm.cs">
