@@ -39,7 +39,7 @@ namespace HotelGroupSystem.Presentation
         public AvailabilityCheckForm()
         {
             InitializeComponent();
-            //Hide feedback
+            HideFeedback();
 
             monthCalendar1.DateSelected += monthCalendar1_DateSelected;
             monthCalendar1.DateChanged += monthCalendar1_DateChanged;
@@ -68,29 +68,21 @@ namespace HotelGroupSystem.Presentation
             updateBookingBtn.Show();
         }
 
-        private void FindDates()
+        public void GetDetails()
         {
             setValueForCheckIn = monthCalendar1.SelectionStart.Date.ToShortDateString();
             setValueForCheckOut = monthCalendar1.SelectionEnd.Date.ToShortDateString();
+            //Rooms which are available:
+        }
+
+        public void DisplayDetails()
+        {
+            GetDetails();
 
             checkInLabel.Text = setValueForCheckIn;
             checkOutLabel.Text = setValueForCheckOut;
 
-            //if no rooms are available
-            // summaryLabel.Text = ("No rooms are available between " + date1 + " to " + date2);
-        }
-
-        private bool CheckFormOpen()
-        {
-            FormCollection fc = Application.OpenForms;
-            foreach (Form frm in fc)
-            {
-                if (frm == createBookingForm)
-                {
-                    return true; 
-                }
-            }
-            return false;
+            ShowFeedback();
         }
 
         public void sendDates2NewBookingForm()
@@ -100,7 +92,7 @@ namespace HotelGroupSystem.Presentation
 
         }
 
-        #endregion
+       #endregion
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
         }
@@ -111,30 +103,28 @@ namespace HotelGroupSystem.Presentation
 
         private void checkBtn_Click(object sender, EventArgs e)
         {
-            FindDates();
-            ShowFeedback();
+            DisplayDetails();
         }
 
         private void newBookingBtn_Click(object sender, EventArgs e)
         {
-            
-
-            if(Application.OpenForms.OfType<HomePageForm>().Count() == 1)
+            //createBookingForm.bookingFormClosed == false
+            //Application.OpenForms.OfType<HomePageForm>().Count() == 1
+            if (Application.OpenForms.OfType<HomePageForm>().Count() == 1)
             {
-                setValueForCheckIn = monthCalendar1.SelectionStart.Date.ToShortDateString();
-                setValueForCheckOut = monthCalendar1.SelectionEnd.Date.ToShortDateString();
+                GetDetails();
 
-                createBookingForm.Update();
-                createBookingForm.Refresh();
-                createBookingForm.Focus();
+                HomePageForm.ActiveForm.Update();
+                HomePageForm.ActiveForm.Focus();
+               
+                //createBookingForm.Focus();
 
                 //Close this form
                 this.Close();
             }
             else 
             {
-                setValueForCheckIn = monthCalendar1.SelectionStart.Date.ToShortDateString();
-                setValueForCheckOut = monthCalendar1.SelectionEnd.Date.ToShortDateString();
+                GetDetails();
 
                 //Open new booking form
                 createBookingForm = new HomePageForm();
@@ -144,20 +134,26 @@ namespace HotelGroupSystem.Presentation
                 this.Close();
             }
            
-
-            
-
         }
 
         private void updateBookingBtn_Click(object sender, EventArgs e)
         {
-            setValueForCheckIn = monthCalendar1.SelectionStart.Date.ToShortDateString();
-            setValueForCheckOut = monthCalendar1.SelectionEnd.Date.ToShortDateString();
+            if (Application.OpenForms.OfType<UpdateBookingForm>().Count() == 1) //if update form open
+            {
+                GetDetails();
 
-            //Update new booking form
-            updateBookingForm = new UpdateBookingForm();
-            updateBookingForm.Show();
+                //Update existing form
+                UpdateBookingForm.ActiveForm.Update();
+                UpdateBookingForm.ActiveForm.Focus();
+            }
+            else //if update form not open
+            {
+                GetDetails();
 
+                //Open new booking form
+                updateBookingForm = new UpdateBookingForm();
+                updateBookingForm.Show();
+            }
             //Close this form
             this.Close();
         }

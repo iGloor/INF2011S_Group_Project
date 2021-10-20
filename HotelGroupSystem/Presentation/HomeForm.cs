@@ -72,5 +72,22 @@ namespace HotelGroupSystem.Presentation
         {
 
         }
+
+        private void occupancyReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Data", "Occupancy Report");
+        }
+
+        private void seasonalSummaryReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Data" ,"Seasonal Summary Report");
+        }
+
+        private void makeAnEnquiryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Open update booking form
+            updateBookingForm = new UpdateBookingForm();
+            updateBookingForm.Show();
+        }
     }
 }

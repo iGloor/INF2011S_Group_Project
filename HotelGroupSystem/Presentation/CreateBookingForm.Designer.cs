@@ -187,7 +187,7 @@ namespace HotelGroupSystem
             // 
             // calcAmountBtn
             // 
-            this.calcAmountBtn.Location = new System.Drawing.Point(669, 122);
+            this.calcAmountBtn.Location = new System.Drawing.Point(584, 122);
             this.calcAmountBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.calcAmountBtn.Name = "calcAmountBtn";
             this.calcAmountBtn.Size = new System.Drawing.Size(209, 31);
@@ -412,6 +412,7 @@ namespace HotelGroupSystem
             this.Name = "HomePageForm";
             this.Text = "Create New Booking";
             this.Activated += new System.EventHandler(this.HomePageForm_Activated);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HomePageForm_FormClosed);
             this.Load += new System.EventHandler(this.HomePageForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

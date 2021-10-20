@@ -97,7 +97,7 @@ namespace HotelGroupSystem.Presentation
             this.newBookingBtn.Name = "newBookingBtn";
             this.newBookingBtn.Size = new System.Drawing.Size(161, 40);
             this.newBookingBtn.TabIndex = 5;
-            this.newBookingBtn.Text = "Create New Booking";
+            this.newBookingBtn.Text = "Create Booking";
             this.newBookingBtn.UseVisualStyleBackColor = true;
             this.newBookingBtn.Click += new System.EventHandler(this.newBookingBtn_Click);
             // 

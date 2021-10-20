@@ -17,8 +17,8 @@ namespace HotelGroupSystem
     {
         #region Declare Variables
         AvailabilityCheckForm availabilityCheckForm;
-        HomePageForm bookingForm;
-
+        BookingDetails bookingDetails;
+        
         
         #endregion
 
@@ -48,13 +48,19 @@ namespace HotelGroupSystem
             MessageBox.Show("Your booking has been saved, your reference number is ...");
 
             //Save booking details in database
+
+            //Open booking details form
+            bookingDetails = new BookingDetails();
+            bookingDetails.Show();
         }
 
         private void checkGuestBtn_Click(object sender, EventArgs e)
         {
             //check if guest is is database by using id textbox
+            //if guest found, populate text boxes
             //if not in database
             MessageBox.Show("The guest you entered is not in our database");
+
         }
 
         private void calcAmountBtn_Click(object sender, EventArgs e)
@@ -67,20 +73,23 @@ namespace HotelGroupSystem
             //Open availability check form
             availabilityCheckForm = new AvailabilityCheckForm();
             availabilityCheckForm.Show();
-
         }
 
         private void HomePageForm_Load(object sender, EventArgs e)
         {
             checkInTxt.Text = AvailabilityCheckForm.setValueForCheckIn;
             checkOutTxt.Text = AvailabilityCheckForm.setValueForCheckOut;
-
-
         }
 
         private void HomePageForm_Activated(object sender, EventArgs e)
         {
+            checkInTxt.Text = AvailabilityCheckForm.setValueForCheckIn;
+            checkOutTxt.Text = AvailabilityCheckForm.setValueForCheckOut;
+        }
 
+        private void HomePageForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
         }
     }
 }

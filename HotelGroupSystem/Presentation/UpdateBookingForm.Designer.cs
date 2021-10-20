@@ -58,6 +58,7 @@ namespace HotelGroupSystem.Presentation
             this.calculateAmountBtn = new System.Windows.Forms.Button();
             this.discountCodeLabel = new System.Windows.Forms.Label();
             this.discountCodeTxt = new System.Windows.Forms.TextBox();
+            this.enquireBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // checkRefNoBtn
@@ -68,7 +69,7 @@ namespace HotelGroupSystem.Presentation
             this.checkRefNoBtn.Name = "checkRefNoBtn";
             this.checkRefNoBtn.Size = new System.Drawing.Size(242, 36);
             this.checkRefNoBtn.TabIndex = 0;
-            this.checkRefNoBtn.Text = "Check Referencce Number";
+            this.checkRefNoBtn.Text = "Check Reference Number";
             this.checkRefNoBtn.UseVisualStyleBackColor = true;
             this.checkRefNoBtn.Click += new System.EventHandler(this.checkRefNoBtn_Click);
             // 
@@ -158,6 +159,7 @@ namespace HotelGroupSystem.Presentation
             this.bDetailsUpdateBtn.TabIndex = 13;
             this.bDetailsUpdateBtn.Text = "Update Booking Details";
             this.bDetailsUpdateBtn.UseVisualStyleBackColor = true;
+            this.bDetailsUpdateBtn.Click += new System.EventHandler(this.bDetailsUpdateBtn_Click);
             // 
             // deleteBtn
             // 
@@ -168,6 +170,7 @@ namespace HotelGroupSystem.Presentation
             this.deleteBtn.TabIndex = 15;
             this.deleteBtn.Text = "Delete Booking";
             this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // cancelBtn
             // 
@@ -178,6 +181,7 @@ namespace HotelGroupSystem.Presentation
             this.cancelBtn.TabIndex = 16;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // roomTxt
             // 
@@ -281,6 +285,7 @@ namespace HotelGroupSystem.Presentation
             this.checkDatesBtn.TabIndex = 35;
             this.checkDatesBtn.Text = "Check Dates";
             this.checkDatesBtn.UseVisualStyleBackColor = true;
+            this.checkDatesBtn.Click += new System.EventHandler(this.checkDatesBtn_Click);
             // 
             // calculateAmountBtn
             // 
@@ -290,6 +295,7 @@ namespace HotelGroupSystem.Presentation
             this.calculateAmountBtn.TabIndex = 36;
             this.calculateAmountBtn.Text = "Calculate Amount";
             this.calculateAmountBtn.UseVisualStyleBackColor = true;
+            this.calculateAmountBtn.Click += new System.EventHandler(this.calculateAmountBtn_Click);
             // 
             // discountCodeLabel
             // 
@@ -307,11 +313,22 @@ namespace HotelGroupSystem.Presentation
             this.discountCodeTxt.Size = new System.Drawing.Size(129, 25);
             this.discountCodeTxt.TabIndex = 38;
             // 
+            // enquireBtn
+            // 
+            this.enquireBtn.Location = new System.Drawing.Point(373, 82);
+            this.enquireBtn.Name = "enquireBtn";
+            this.enquireBtn.Size = new System.Drawing.Size(242, 36);
+            this.enquireBtn.TabIndex = 39;
+            this.enquireBtn.Text = "Make Enquiry";
+            this.enquireBtn.UseVisualStyleBackColor = true;
+            this.enquireBtn.Click += new System.EventHandler(this.enquireBtn_Click);
+            // 
             // UpdateBookingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(851, 610);
+            this.Controls.Add(this.enquireBtn);
             this.Controls.Add(this.discountCodeTxt);
             this.Controls.Add(this.discountCodeLabel);
             this.Controls.Add(this.calculateAmountBtn);
@@ -343,6 +360,7 @@ namespace HotelGroupSystem.Presentation
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UpdateBookingForm";
             this.Text = "Update Booking";
+            this.Activated += new System.EventHandler(this.UpdateBookingForm_Activated);
             this.Load += new System.EventHandler(this.UpdateBookingForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -379,5 +397,6 @@ namespace HotelGroupSystem.Presentation
         private System.Windows.Forms.Button calculateAmountBtn;
         private System.Windows.Forms.Label discountCodeLabel;
         private System.Windows.Forms.TextBox discountCodeTxt;
+        private System.Windows.Forms.Button enquireBtn;
     }
 }

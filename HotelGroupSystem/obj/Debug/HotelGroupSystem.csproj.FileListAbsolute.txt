@@ -61,3 +61,4 @@ C:\Users\isabe\OneDrive\Documents\BBusSci\Semester 2\INF2011S\Project\INF2011S_G
 C:\Users\isabe\OneDrive\Documents\BBusSci\Semester 2\INF2011S\Project\INF2011S_Group_Project-main\HotelGroupSystem\bin\Debug\HotelGroupSystem.exe.config
 C:\Users\isabe\OneDrive\Documents\BBusSci\Semester 2\INF2011S\Project\INF2011S_Group_Project-main\HotelGroupSystem\bin\Debug\HotelGroupSystem.exe
 C:\Users\isabe\OneDrive\Documents\BBusSci\Semester 2\INF2011S\Project\INF2011S_Group_Project-main\HotelGroupSystem\bin\Debug\HotelGroupSystem.pdb
+C:\Users\isabe\OneDrive\Documents\BBusSci\Semester 2\INF2011S\Project\INF2011S_Group_Project-main\HotelGroupSystem\obj\Debug\HotelGroupSystem.Presentation.BookingDetails.resources

@@ -15,6 +15,8 @@ namespace HotelGroupSystem.Presentation
     public partial class UpdateBookingForm : Form
     {
         #region Declare Variables
+        AvailabilityCheckForm availabilityCheckForm;
+        BookingDetails bookingDetails;
 
         #endregion
 
@@ -25,10 +27,9 @@ namespace HotelGroupSystem.Presentation
         public UpdateBookingForm()
         {
             InitializeComponent();
-
-            //Call hide fields method
             HideFields();
-
+            //Booking class
+            Booking booking;
         }
         #endregion
 
@@ -41,6 +42,7 @@ namespace HotelGroupSystem.Presentation
         {
             //Hide the following:
             checkRefNoBtn.Hide();
+            enquireBtn.Hide();
 
             //Show the following:
             feedbackLabel.Show();
@@ -99,19 +101,65 @@ namespace HotelGroupSystem.Presentation
             bDetailsUpdateBtn.Hide();
             cancelBtn.Hide();
             deleteBtn.Hide();
+            discountCodeLabel.Hide();
+            discountCodeTxt.Hide();
 
         }
         #endregion
 
         private void UpdateBookingForm_Load(object sender, EventArgs e)
         {
-
+            checkInTxt.Text = AvailabilityCheckForm.setValueForCheckIn;
+            checkOutTxt.Text = AvailabilityCheckForm.setValueForCheckOut;
         }
 
         private void checkRefNoBtn_Click(object sender, EventArgs e)
         {
             //if statement if there is a booking number call show call method and populate textboxes
             ShowAll();
+        }
+
+        private void checkDatesBtn_Click(object sender, EventArgs e)
+        {
+            //Open availability check form
+            availabilityCheckForm = new AvailabilityCheckForm();
+            availabilityCheckForm.Show();
+        }
+
+        private void UpdateBookingForm_Activated(object sender, EventArgs e)
+        {
+            checkInTxt.Text = AvailabilityCheckForm.setValueForCheckIn;
+            checkOutTxt.Text = AvailabilityCheckForm.setValueForCheckOut;
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            //Close form
+            this.Close();
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            //Delete from database
+
+        }
+
+        private void bDetailsUpdateBtn_Click(object sender, EventArgs e)
+        {
+            //Update booking in database
+            //Open booking details form
+            bookingDetails = new BookingDetails();
+            bookingDetails.Show();
+        }
+
+        private void calculateAmountBtn_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void enquireBtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Payment and confirmation status", "Booking equiry");
         }
     }
 }
