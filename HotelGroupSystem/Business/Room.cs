@@ -31,7 +31,7 @@ namespace HotelGroupSystem.Business
         #endregion
 
         #region Property Methods
-        public int RoomNumber
+        public int RoomNumbers
         {
             get { return roomNumber; }
         }
