@@ -74,12 +74,12 @@ namespace HotelGroupSystem.Business
         {
             int index = 0;
             //check if it is the first guest
-            //bool found = (guests[index].getGuestID == gID);
+            bool found = (guests[index].GuestID == gID);
             int count = guests.Count;
-            //while (!(found) && (index < guests.Count - 1))
+            while (!(found) && (index < guests.Count - 1))
             { 
                 index = index + 1;
-              //  found = (guests[index].getGuestID == gID);   // this will be TRUE if found
+                found = (guests[index].GuestID == gID);   // this will be TRUE if found
             }
             return guests[index];  
         }
@@ -88,11 +88,11 @@ namespace HotelGroupSystem.Business
         {
             int counter = 0;
             bool found = false;
-          //  found = (aGuest.getGuestID == guests[counter].getGuestID);   //using a Boolean Expression to initialise found
+            found = (aGuest.GuestID == guests[counter].GuestID);   //using a Boolean Expression to initialise found
             while (!(found) & counter < guests.Count - 1)
             {
                 counter += 1;
-               // found = (aGuest.getGuestID == guests[counter].getGuestID);
+                found = (aGuest.GuestID == guests[counter].GuestID);
             }
             if (found)
             {

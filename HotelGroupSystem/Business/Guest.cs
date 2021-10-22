@@ -15,7 +15,8 @@ namespace HotelGroupSystem.Business
         private string name;
         private int phone;
         private string address;
-        
+
+        private string email;
         //Booking 
         public Booking booking;
         #endregion
@@ -49,10 +50,18 @@ namespace HotelGroupSystem.Business
             get { return name; }
         }
 
+        public string Email
+        {
+            set { email = value; }
+            get
+            {
+                return email;
+            }
+        }
         #endregion
 
-        #region Constructor
-        public Guest()
+                #region Constructor
+                public Guest()
         {
 
         }
