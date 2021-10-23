@@ -44,10 +44,11 @@ namespace HotelGroupSystem.Presentation
             // monthCalendar1
             // 
             this.monthCalendar1.Location = new System.Drawing.Point(51, 69);
-            this.monthCalendar1.MaxDate = new System.DateTime(2021, 12, 31, 0, 0, 0, 0);
+            this.monthCalendar1.MaxDate = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
             this.monthCalendar1.MaxSelectionCount = 31;
             this.monthCalendar1.MinDate = new System.DateTime(2021, 12, 1, 0, 0, 0, 0);
             this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.SelectionRange = new System.Windows.Forms.SelectionRange(new System.DateTime(2021, 12, 1, 0, 0, 0, 0), new System.DateTime(2021, 12, 31, 0, 0, 0, 0));
             this.monthCalendar1.ShowToday = false;
             this.monthCalendar1.ShowTodayCircle = false;
             this.monthCalendar1.TabIndex = 0;
@@ -80,6 +81,7 @@ namespace HotelGroupSystem.Presentation
             this.summaryView.Size = new System.Drawing.Size(270, 207);
             this.summaryView.TabIndex = 3;
             this.summaryView.UseCompatibleStateImageBehavior = false;
+            this.summaryView.SelectedIndexChanged += new System.EventHandler(this.summaryView_SelectedIndexChanged);
             // 
             // checkBtn
             // 

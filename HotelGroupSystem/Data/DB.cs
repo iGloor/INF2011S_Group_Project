@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
-using HotelGroupSystem.Properties;
+using System.Configuration;
 
 namespace HotelGroupSystem
 {
@@ -14,7 +14,8 @@ namespace HotelGroupSystem
     {
         #region Variable declaration
 
-        private string strConn = Settings.Default.HotelDatabaseConnectionString /*add connection string for the database*/;
+        private string strConn = System.Configuration.ConfigurationManager.ConnectionStrings["HotelGroupSystemDBConnectionString"].ConnectionString;
+            /*= Settings.Default.EmployeeDatabaseConnectionString*/ /*add connection string for the database*/
         protected SqlConnection cnMain;
         protected DataSet dsMain;
         protected SqlDataAdapter daMain;
@@ -64,6 +65,7 @@ namespace HotelGroupSystem
         }
 
         #endregion
+ 
 
         #region Update the data source 
         protected bool UpdateDataSource(string sqlLocal, string table)
@@ -92,5 +94,7 @@ namespace HotelGroupSystem
             return success;
         }
         #endregion
+
+        
     }
 }

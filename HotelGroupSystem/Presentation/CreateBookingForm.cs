@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using HotelGroupSystem.Presentation;
 using HotelGroupSystem.Business;
+using HotelGroupSystem.Data;
 // note: date needs to be passed and rate needs to be found to autofill rate and date textboxes
 
 namespace HotelGroupSystem
@@ -18,12 +20,11 @@ namespace HotelGroupSystem
         #region Declare Variables
         AvailabilityCheckForm availabilityCheckForm;
         BookingDetails bookingDetails;
-        GuestController guestController;
-        BookingController bookingController;
-        Booking booking;
-        Guest guest;
-        
-        
+        private Guest guest;
+        private GuestController guestController;
+
+        private int guestId;
+
         #endregion
 
         #region Property Methods
@@ -33,11 +34,11 @@ namespace HotelGroupSystem
         public HomePageForm()
         {
             InitializeComponent();
-            guestController = new GuestController();
-            //guest controller
-            bookingController = new BookingController(); ;
-           
+            //booking controller
 
+            //guest controller
+            guestController = new GuestController();
+            guestController.Find(guestId);
         }
         #endregion
 
@@ -45,32 +46,50 @@ namespace HotelGroupSystem
         #endregion
 
         #region Utility Methods
+        //Retrieve guest details
+
+        private void PopulateGuestDetails(Guest guest)
+        {
+
+            guest = guestController.Find(Convert.ToInt32(guestIdTxt.Text));
+
+            //check if guest is is database by using id textbox
+            if (guest != null)
+            {
+                //guest = guestController.Find(Convert.ToInt32(guestIDtxt.Text));
+                //if guest found, populate text boxes
+                guestIdTxt.Text = Convert.ToString(guest.GuestID);
+                firstNameTxt.Text = guest.FirstName;
+                surnameTxt.Text = guest.Surname;
+                phoneTxt.Text = guest.Phone;
+                emailTxt.Text = guest.Email;
+                addressTxt.Text = guest.Address;
+            }
+            else //if not in database
+            {
+                MessageBox.Show("The guest you entered is not in our database");
+            }
+                        
+        }
+        //Store guest details
+        private void StoreGuestDetails()
+        {
+            firstNameTxt.Text = guest.FirstName;
+            surnameTxt.Text = guest.Surname;
+            addressTxt.Text = guest.Address;
+            emailTxt.Text = guest.Email;
+            phoneTxt.Text = guest.Phone;
+        }
         #endregion
 
         private void confirmBookingBtn_Click(object sender, EventArgs e)
         {
             //Call reference number method
 
-            booking = new Booking();
-
-            booking.CheckInDate = checkInTxt.Text;
-            booking.CheckOutDate = checkOutTxt.Text;
-            booking.RoomsBooked = Convert.ToInt32(roomTxt.Text);           
-            booking.RoomRate = Convert.ToDecimal(rateTxt.Text);
-            //booking.discount = discountCodeTxt.Text;
-
-            booking.TotalDue = Convert.ToDecimal(totalTxt.Text);
-            booking.CreditCardNo = Convert.ToInt32(cardNoTxt.Text);
-            booking.BankName = bankTxt.Text;
-            booking.BookingRef = bookingController.RandomNumber(1, 100);//testing reference num
-            
-
             //Show message box with reference number
-            MessageBox.Show("Your booking has been saved, your reference number is " + booking.BookingRef);
+            MessageBox.Show("Your booking has been saved, your reference number is ...");
 
             //Save booking details in database
-            bookingController.DataMaintenance(booking, DB.DBOperation.Add);
-            bookingController.FinalizeChanges(booking);
 
             //Open booking details form
             bookingDetails = new BookingDetails();
@@ -79,35 +98,22 @@ namespace HotelGroupSystem
 
         private void checkGuestBtn_Click(object sender, EventArgs e)
         {
-
-            guest = guestController.Find(Convert.ToInt32(guestIDtxt.Text));
-
             //check if guest is is database by using id textbox
-            if (guest != null)
-            {
-                //guest = guestController.Find(Convert.ToInt32(guestIDtxt.Text));
-                //if guest found, populate text boxes
-                guestIDtxt.Text = Convert.ToString(guest.GuestID);
-                nameTxt.Text = guest.Name;
-                phoneTxt.Text = Convert.ToString(guest.Phone);
-                emailTxt.Text = guest.Email;
-                addressTxt.Text = guest.Address;
-            }
-            else //if not in database
-            {
-                MessageBox.Show("The guest you entered is not in our database");
-            }
+            //if guest found, populate text boxes
+            //if not in database
+            // MessageBox.Show("The guest you entered is not in our database");
 
-           // guest = null;
+            guestId = Convert.ToInt32(guestIdTxt.Text);
+            GuestController guestController = new GuestController();
+            guestController.Find(guestId);
+            
+            PopulateGuestDetails(guest);
 
         }
 
         private void calcAmountBtn_Click(object sender, EventArgs e)
         {
             //Call method to calculate total amount due (rooms * rate)
-            double rate = Convert.ToDouble(rateTxt.Text);
-            int rooms = Convert.ToInt32(roomTxt.Text);
-            totalTxt.Text = Convert.ToString(rooms * rate);
         }
 
         private void checkDatesBtn_Click(object sender, EventArgs e)
@@ -132,11 +138,6 @@ namespace HotelGroupSystem
         private void HomePageForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             
-        }
-
-        private void guestID_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

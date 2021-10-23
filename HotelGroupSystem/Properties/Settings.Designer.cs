@@ -26,11 +26,11 @@ namespace HotelGroupSystem.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\HotelDatabase" +
-            ".mdf;Integrated Security=True")]
-        public string HotelDatabaseConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-33MMMAJU\\SQLEXPRESS;Initial Catalog=HotelSystemDB;Integrated S" +
+            "ecurity=True")]
+        public string HotelSystemDBConnectionString {
             get {
-                return ((string)(this["HotelDatabaseConnectionString"]));
+                return ((string)(this["HotelSystemDBConnectionString"]));
             }
         }
     }

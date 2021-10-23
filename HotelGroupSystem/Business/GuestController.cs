@@ -34,6 +34,11 @@ namespace HotelGroupSystem.Business
 
         #endregion
 
+        #region Methods
+        
+       
+        #endregion
+
         #region Database Communication.
         public void DataMaintenance(Guest aGuest, DB.DBOperation operation)
         {
@@ -69,32 +74,20 @@ namespace HotelGroupSystem.Business
 
         #region Searching through a collection
 
-        //This method receives a Guest ID as a parameter; finds the guest object in the collection of guests and then returns this object
+        //This method receives a Guest ID as a parameter; finds the booking object in the collection of guests and then returns this object
         public Guest Find(int gID)
         {
-            
-             int index = 0;
-             int found = 0;
-
+            int index = 0;
             //check if it is the first guest
-
-            Console.WriteLine(guests.Count);
-            for (int i = 0; i < guests.Count; i++) {
-
-                if (gID == guests[i].GuestID)
-                {
-                    found += 1;
-                    index = i;
-                }
-
+            bool found = (guests[index].GuestID == gID);
+            int count = guests.Count;
+            while (!(found) && (index < guests.Count - 1))
+            { 
+                index = index + 1;
+                found = (guests[index].GuestID == gID);   // this will be TRUE if found
             }
-            if (found  == 1)
-            {
-                return guests[index];
-            }
-            else { return null; }  
+            return guests[index];  
         }
-
 
         public int FindIndex(Guest aGuest)
         {

@@ -9,14 +9,9 @@ namespace HotelGroupSystem.Business
     class Discount
     {
         #region Declare Variables
+        private int discountID;
         private string discountCode;
-        public enum DiscountPercentage
-        {
-            cancelDepositMade = 50,
-            cancelNoDeposit = 10,
-                noDiscount = 0
-        }
-        protected DiscountPercentage discountPercent;
+        private decimal discountPercent;
         #endregion
 
         #region Property Methods
@@ -25,7 +20,7 @@ namespace HotelGroupSystem.Business
             get { return discountCode; }
             set { discountCode = value; }
         }
-        public DiscountPercentage DiscountPercent
+        public decimal DiscountPercent
         {
             get { return discountPercent; }
             set { discountPercent = value; }
@@ -36,25 +31,14 @@ namespace HotelGroupSystem.Business
         public Discount()
         {
             discountCode = "";
-            discountPercent = Discount.DiscountPercentage.noDiscount;
+            discountPercent = 0;
         }
         #endregion
 
         #region Methods
         public virtual decimal GetDiscount()
         {
-            if (discountPercent == DiscountPercentage.cancelDepositMade)
-            {
-                return 10 / 100;
-            }
-            else if (discountPercent == DiscountPercentage.cancelNoDeposit)
-            {
-                return 50/100 ;
-            }
-            else
-            {
-                  return 0;
-            }
+            return 0;
         }
         #endregion
 

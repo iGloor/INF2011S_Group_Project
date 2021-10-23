@@ -28,8 +28,6 @@ namespace HotelGroupSystem.Presentation
         {
             InitializeComponent();
             HideFields();
-            //Booking class
-            Booking booking;
         }
         #endregion
 
@@ -122,8 +120,8 @@ namespace HotelGroupSystem.Presentation
         private void checkDatesBtn_Click(object sender, EventArgs e)
         {
             //Open availability check form
-            availabilityCheckForm = new AvailabilityCheckForm();
-            availabilityCheckForm.Show();
+           // availabilityCheckForm = new AvailabilityCheckForm();
+            //availabilityCheckForm.Show();
         }
 
         private void UpdateBookingForm_Activated(object sender, EventArgs e)

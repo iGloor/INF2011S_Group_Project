@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HotelGroupSystem.Business;
+using HotelGroupSystem.Data;
 
 namespace HotelGroupSystem.Presentation
 {
@@ -25,14 +29,27 @@ namespace HotelGroupSystem.Presentation
         //Upon closing, date and max room is passed back to relevant form
 
         #region Declare Variables
-
+        //Declare forms
         UpdateBookingForm updateBookingForm;
         HomePageForm createBookingForm;
+
+        //Declare calendar variables
+        private BookingCalendar calendar;
+        private BookingCalendarController bookingCalendarController;
+
+        private Collection<BookingCalendar> allBookingCalendars;
 
         //Pass info to form 2
         public static string setValueForCheckIn = "";
         public static string setValueForCheckOut = "";
-        
+
+        DateTime checkInDate;
+        DateTime checkOutDate;
+
+        #endregion
+
+        #region Property Methods
+       
         #endregion
 
         #region Constructor
@@ -43,6 +60,10 @@ namespace HotelGroupSystem.Presentation
 
             monthCalendar1.DateSelected += monthCalendar1_DateSelected;
             monthCalendar1.DateChanged += monthCalendar1_DateChanged;
+
+            bookingCalendarController = new BookingCalendarController();
+            bookingCalendarController.GetRoomsAvailable(checkInDate, checkOutDate);
+
         }
         #endregion
 
@@ -72,6 +93,9 @@ namespace HotelGroupSystem.Presentation
         {
             setValueForCheckIn = monthCalendar1.SelectionStart.Date.ToShortDateString();
             setValueForCheckOut = monthCalendar1.SelectionEnd.Date.ToShortDateString();
+
+            checkInDate = monthCalendar1.SelectionStart.Date;
+            checkOutDate = monthCalendar1.SelectionEnd.Date;
             //Rooms which are available:
         }
 
@@ -83,6 +107,39 @@ namespace HotelGroupSystem.Presentation
             checkOutLabel.Text = setValueForCheckOut;
 
             ShowFeedback();
+        }
+
+        public void setUpBookingCalendarListView()
+        {
+            ListViewItem bookingCalendarDetails;
+            allBookingCalendars = null;
+            summaryView.Clear();
+
+            List<AvailableRooms> allAvailableRooms = bookingCalendarController.GetRoomsAvailable(checkInDate, checkOutDate);
+
+            summaryView.View = View.Details;
+
+
+            allBookingCalendars = bookingCalendarController.AllBookingCalendars;
+
+            summaryView.Columns.Add("Date ", 80, HorizontalAlignment.Left);
+            summaryView.Columns.Add("Available Rooms ", 110, HorizontalAlignment.Left);
+
+            foreach (AvailableRooms availableRooms in allAvailableRooms)
+            {
+                bookingCalendarDetails = new ListViewItem(availableRooms.CalendarDate.ToString("yyyy/MM/dd"));
+                bookingCalendarDetails.SubItems.Add(availableRooms.RoomsAvailable.ToString());
+                summaryView.Items.Add(bookingCalendarDetails);
+                
+            }
+            summaryView.Refresh();
+            summaryView.GridLines = true;
+        }
+
+        //Populate employee object method
+        private void SetDates()
+        {
+
         }
 
         public void sendDates2NewBookingForm()
@@ -104,6 +161,8 @@ namespace HotelGroupSystem.Presentation
         private void checkBtn_Click(object sender, EventArgs e)
         {
             DisplayDetails();
+
+            setUpBookingCalendarListView();
         }
 
         private void newBookingBtn_Click(object sender, EventArgs e)
@@ -162,5 +221,16 @@ namespace HotelGroupSystem.Presentation
         {
             
         }
+
+        private void summaryView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           // if (monthCalendar1_DateSelected. SelectedItems.Count > 0)   // if you selected an item 
+           // {
+               // employee = employeeController.Find(employeeListView.SelectedItems[0].Text);  //selected student becoms current student
+                                                                                             // Show the details of the selected student in the controls
+               // PopulateTextBoxes(employee);
+            //}
+        }
     }
 }
+

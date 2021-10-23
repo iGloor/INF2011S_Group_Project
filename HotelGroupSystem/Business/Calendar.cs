@@ -12,27 +12,25 @@ namespace HotelGroupSystem.Business
     {
         #region Declare Variables
 
-        DateTime date;
+        private int calendarID;
 
-        Room room;
-        Collection<Room> rooms;
-
-        Booking booking;
+        private DateTime date;
+                
         #endregion
 
         #region Property Methods
+        public DateTime aDate
+        {
+            get { return date; }
+            set { date = value; }
+        }
 
         #endregion
 
         #region Constructor
-
-        #endregion
-
-        #region Methods
-        //Save date 
-        public void SaveDate()
+        public Calendar(DateTime aDate)
         {
-
+            date = aDate;
         }
         #endregion
     }
