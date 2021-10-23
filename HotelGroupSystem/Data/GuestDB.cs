@@ -59,12 +59,14 @@ namespace HotelGroupSystem.Data
                     guest = new Guest();
 
                     //Obtain each guest attribute from the specific field in the row in the table
-                   // guest.getGuestID = Convert.ToInt32(myRow["GuestID"]);
-                    guest.getName = Convert.ToString(myRow["Name"]).TrimEnd();
+                    guest.GuestID = Convert.ToInt32(myRow["GuestID"]);
+                    guest.Name = Convert.ToString(myRow["Name"]).TrimEnd();
 
-                   // guest.getPhone = Convert.ToString(myRow["Phone"]).TrimEnd();
+                    guest.Phone = Convert.ToString(myRow["Phone"]).TrimEnd();
+                    guest.Phone = Convert.ToString(myRow["Phone"]).TrimEnd();
                     //guest.getAge = Convert.ToInt32(myRow["Age"]);
-                    //guest.getAddress = Convert.ToString(myRow["Address"]).TrimEnd();
+                    guest.Address = Convert.ToString(myRow["Address"]).TrimEnd();
+                    guest.Email = Convert.ToString(myRow["Email"]).TrimEnd();
 
                     //add booking to bookings collection
                     guests.Add(guest);
