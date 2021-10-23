@@ -69,30 +69,42 @@ namespace HotelGroupSystem.Business
 
         #region Searching through a collection
 
-        //This method receives a Guest ID as a parameter; finds the booking object in the collection of guests and then returns this object
+        //This method receives a Guest ID as a parameter; finds the guest object in the collection of guests and then returns this object
         public Guest Find(int gID)
         {
-            int index = 0;
+            
+             int index = 0;
+             int found = 0;
+
             //check if it is the first guest
-            //bool found = (guests[index].getGuestID == gID);
-            int count = guests.Count;
-            //while (!(found) && (index < guests.Count - 1))
-            { 
-                index = index + 1;
-              //  found = (guests[index].getGuestID == gID);   // this will be TRUE if found
+
+            Console.WriteLine(guests.Count);
+            for (int i = 0; i < guests.Count; i++) {
+
+                if (gID == guests[i].GuestID)
+                {
+                    found += 1;
+                    index = i;
+                }
+
             }
-            return guests[index];  
+            if (found  == 1)
+            {
+                return guests[index];
+            }
+            else { return null; }  
         }
+
 
         public int FindIndex(Guest aGuest)
         {
             int counter = 0;
             bool found = false;
-          //  found = (aGuest.getGuestID == guests[counter].getGuestID);   //using a Boolean Expression to initialise found
+            found = (aGuest.GuestID == guests[counter].GuestID);   //using a Boolean Expression to initialise found
             while (!(found) & counter < guests.Count - 1)
             {
                 counter += 1;
-               // found = (aGuest.getGuestID == guests[counter].getGuestID);
+                found = (aGuest.GuestID == guests[counter].GuestID);
             }
             if (found)
             {

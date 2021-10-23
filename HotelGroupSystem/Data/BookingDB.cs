@@ -59,11 +59,11 @@ namespace HotelGroupSystem.Data
                     //booking.GuestID = Convert.ToString(myRow["ID"]).TrimEnd();
 
                     //Obtain each booking attribute from the specific field in the row in the table
-                  //  booking.BookingRef = Convert.ToString(myRow["BookingReference"]).TrimEnd();
+                    //booking.BookingRef = Convert.ToString(myRow["BookingReference"]).TrimEnd();
                     booking.CheckInDate = Convert.ToString(myRow["CheckInDate"]).TrimEnd();
                     booking.CheckOutDate = Convert.ToString(myRow["CheckOutDate"]).TrimEnd();
                     booking.RoomsBooked = Convert.ToInt32(myRow["RoomsBooked"]);
-                    booking.RoomRate = Convert.ToDecimal(myRow["RoomRate"]);
+                    booking.RoomRate = Convert.ToDecimal(myRow["RoomRateID"]);
                     booking.TotalDue = Convert.ToDecimal(myRow["TotalDue"]);
 
                     //add booking to bookings collection
@@ -84,10 +84,10 @@ namespace HotelGroupSystem.Data
             }
 
             aRow["RoomsBooked"] = aBooking.RoomsBooked;
-            aRow["RoomRate"] = aBooking.RoomRate;
+            //aRow["RoomRateID"] = aBooking.RoomRate;
             aRow["TotalDue"] = aBooking.TotalDue;
-            aRow["ChekInDate"] = aBooking.CheckInDate;
-            aRow["ChekOutDate"] = aBooking.CheckOutDate;
+            aRow["CheckInDate"] = Convert.ToDateTime(aBooking.CheckInDate);
+            aRow["CheckOutDate"] = Convert.ToDateTime(aBooking.CheckOutDate);
 
         }
 
@@ -168,8 +168,8 @@ namespace HotelGroupSystem.Data
             param = new SqlParameter("@CheckOutDate", SqlDbType.NVarChar, 10, "CheckOutDate");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@RoomRate", SqlDbType.Money, 10, "RoomRate");
-            daMain.InsertCommand.Parameters.Add(param);
+            /*param = new SqlParameter("@RoomRateID", SqlDbType.Money, 10, "RoomRateID");
+            daMain.InsertCommand.Parameters.Add(param);*/
         }
 
 
@@ -211,7 +211,8 @@ namespace HotelGroupSystem.Data
         {
             //Command used to insert values into the Bookings table..
 
-            daMain.InsertCommand = new SqlCommand("INSERT into Bookings (GuestID, BookingReference, RoomsBooked, RoomRate, TotalDue, CheckInDate, CheckOutDate) VALUES (@GuestID, @BookingReference, @RoomsBooked, @RoomRate, @TotalDue, @CheckInDate,CheckOutDate)", cnMain);
+            daMain.InsertCommand = new SqlCommand("INSERT into Bookings (GuestID, BookingReference, RoomsBooked, TotalDue, CheckInDate, CheckOutDate) VALUES (@GuestID, @BookingReference, @RoomsBooked, @TotalDue, @CheckInDate,CheckOutDate)", cnMain);
+            //daMain.InsertCommand = new SqlCommand("INSERT into Bookings (GuestID, BookingReference, RoomsBooked, RoomRate, TotalDue, CheckInDate, CheckOutDate) VALUES (@GuestID, @BookingReference, @RoomsBooked, @RoomRate, @TotalDue, @CheckInDate,CheckOutDate)", cnMain);
             Build_INSERT_Parameters(aBooking);
         }
 

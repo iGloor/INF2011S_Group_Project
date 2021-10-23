@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
+using HotelGroupSystem.Properties;
 
 namespace HotelGroupSystem
 {
@@ -13,7 +14,7 @@ namespace HotelGroupSystem
     {
         #region Variable declaration
 
-        private string strConn /*= Settings.Default.EmployeeDatabaseConnectionString*/ /*add connection string for the database*/;
+        private string strConn = Settings.Default.HotelDatabaseConnectionString /*add connection string for the database*/;
         protected SqlConnection cnMain;
         protected DataSet dsMain;
         protected SqlDataAdapter daMain;

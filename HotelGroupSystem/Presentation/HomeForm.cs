@@ -89,5 +89,10 @@ namespace HotelGroupSystem.Presentation
             updateBookingForm = new UpdateBookingForm();
             updateBookingForm.Show();
         }
+
+        private void HomeForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
