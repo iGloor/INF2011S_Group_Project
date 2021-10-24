@@ -12,12 +12,11 @@ namespace HotelGroupSystem.Business
         #region Data Members
         //Guest Details
         private int guestID;
-        private string firstName;
-        private string surname;
+        private string name;
         private string phone;
         private string address;
+
         private string email;
-        
         //Booking 
         public Booking booking;
         #endregion
@@ -45,41 +44,34 @@ namespace HotelGroupSystem.Business
         }
 
         //get and set guest name
-        public string FirstName
+        public string Name
         {
-            set { firstName = value; }
-            get { return firstName; }
-        }
-        
-        public string Surname
-        {
-            set { surname = value; }
-            get { return surname; }
+            set { name = value; }
+            get { return name; }
         }
 
-        //get and set guest name
         public string Email
         {
             set { email = value; }
-            get { return email; }
+            get
+            {
+                return email;
+            }
         }
-
         #endregion
 
-        #region Constructor
-        public Guest()
+                #region Constructor
+                public Guest()
         {
 
         }
 
-        public Guest(string fName, string sName, int id, string phoneNo, string address, string emailAd)
+        public Guest(string name, int id, string phoneNo, string address)
         {
-            this.firstName = fName;
-            this.surname = sName;
+            this.name = name;
             this.guestID = id;
             this.phone = phoneNo;
             this.address = address;
-            this.email = emailAd;
         }
 
         #endregion

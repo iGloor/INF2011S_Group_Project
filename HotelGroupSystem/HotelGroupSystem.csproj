@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,7 +49,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,23 +63,20 @@
   <ItemGroup>
     <Compile Include="Business\Booking.cs" />
     <Compile Include="Business\BookingController.cs" />
-    <Compile Include="Business\BookingCalendar.cs" />
     <Compile Include="Business\Calendar.cs" />
-    <Compile Include="Business\BookingCalendarController.cs" />
     <Compile Include="Business\Discount.cs" />
     <Compile Include="Business\Guest.cs" />
     <Compile Include="Business\GuestController.cs" />
     <Compile Include="Business\Room.cs" />
-    <Compile Include="Business\AvailableRooms.cs" />
-    <Compile Include="Business\RoomRate.cs" />
+    <Compile Include="Business\RoomController.cs" />
     <Compile Include="Data\BookingDB.cs" />
-    <Compile Include="Data\CalendarDB.cs" />
     <Compile Include="Data\DB.cs" />
     <Compile Include="Data\GuestDB.cs" />
-    <Compile Include="HotelSystemDBDataSet.Designer.cs">
+    <Compile Include="Data\RoomDB.cs" />
+    <Compile Include="HotelSystemDatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HotelSystemDBDataSet.xsd</DependentUpon>
+      <DependentUpon>HotelSystemDatabaseDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Presentation\AvailabilityCheckForm.cs">
       <SubType>Form</SubType>
@@ -123,19 +134,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="..\.editorconfig">
-      <Link>.editorconfig</Link>
+    <None Include="HotelSystemDatabaseDataSet.xsc">
+      <DependentUpon>HotelSystemDatabaseDataSet.xsd</DependentUpon>
     </None>
-    <None Include="HotelSystemDBDataSet.xsc">
-      <DependentUpon>HotelSystemDBDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="HotelSystemDBDataSet.xsd">
+    <None Include="HotelSystemDatabaseDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>HotelSystemDBDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>HotelSystemDatabaseDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="HotelSystemDBDataSet.xss">
-      <DependentUpon>HotelSystemDBDataSet.xsd</DependentUpon>
+    <None Include="HotelSystemDatabaseDataSet.xss">
+      <DependentUpon>HotelSystemDatabaseDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -150,6 +158,26 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\HotelSystemDatabase.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\HotelSystemDatabase_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>HotelSystemDatabase.mdf</DependentUpon>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

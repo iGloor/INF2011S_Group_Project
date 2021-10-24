@@ -17,7 +17,10 @@ namespace HotelGroupSystem.Presentation
         #region Declare Variables
         AvailabilityCheckForm availabilityCheckForm;
         BookingDetails bookingDetails;
-
+        BookingController bookingController = new BookingController();
+        Booking booking;
+        Guest guest;
+        GuestController guestController = new GuestController();
         #endregion
 
         #region Property Methods
@@ -28,6 +31,8 @@ namespace HotelGroupSystem.Presentation
         {
             InitializeComponent();
             HideFields();
+            //Booking class
+            Booking booking;
         }
         #endregion
 
@@ -113,15 +118,38 @@ namespace HotelGroupSystem.Presentation
 
         private void checkRefNoBtn_Click(object sender, EventArgs e)
         {
+
             //if statement if there is a booking number call show call method and populate textboxes
-            ShowAll();
+            booking = bookingController.Find(Convert.ToInt32(refNumberTxt.Text));
+
+            
+            if (booking != null)
+            {
+
+                guest = guestController.Find(booking.GuestID);
+
+                idTxt.Text = Convert.ToString(booking.GuestID);
+                nameTxt.Text = Convert.ToString(guest.Name);
+                checkInTxt.Text = Convert.ToString(booking.CheckInDate);
+                checkOutTxt.Text = Convert.ToString(booking.CheckOutDate);
+                roomTxt.Text = Convert.ToString(booking.RoomsBooked);
+                rateTxt.Text = Convert.ToString(booking.RoomRate);
+                totalTxt.Text = Convert.ToString(booking.TotalDue);
+
+                ShowAll();
+            }
+            else { 
+                //maybe a message box saying no booking found
+            }
+
+            
         }
 
         private void checkDatesBtn_Click(object sender, EventArgs e)
         {
             //Open availability check form
-           // availabilityCheckForm = new AvailabilityCheckForm();
-            //availabilityCheckForm.Show();
+            availabilityCheckForm = new AvailabilityCheckForm();
+            availabilityCheckForm.Show();
         }
 
         private void UpdateBookingForm_Activated(object sender, EventArgs e)
@@ -139,12 +167,25 @@ namespace HotelGroupSystem.Presentation
         private void deleteBtn_Click(object sender, EventArgs e)
         {
             //Delete from database
+            bookingController.DataMaintenance(booking, DB.DBOperation.Delete);
+            bookingController.FinalizeChanges(booking);
+            
 
         }
 
         private void bDetailsUpdateBtn_Click(object sender, EventArgs e)
         {
             //Update booking in database
+            booking.CheckInDate = checkInTxt.Text;
+            booking.CheckOutDate = checkOutTxt.Text;
+            //booking.discount = discountCodeTxt.Text;
+            booking.RoomRate = Convert.ToDecimal(rateTxt.Text);
+
+            booking.RoomsBooked = Convert.ToInt32(roomTxt.Text);
+            booking.GuestID = Convert.ToInt32(idTxt.Text);
+
+            bookingController.DataMaintenance(booking, DB.DBOperation.Update);
+            bookingController.FinalizeChanges(booking);
             //Open booking details form
             bookingDetails = new BookingDetails();
             bookingDetails.Show();

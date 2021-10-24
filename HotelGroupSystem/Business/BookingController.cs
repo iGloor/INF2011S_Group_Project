@@ -64,25 +64,34 @@ namespace HotelGroupSystem.Business
         public bool FinalizeChanges(Booking booking)
         {
             //***call the BookingDB method that will commit the changes to the database
-            return bookingDB.UpdateDataSource(booking);
+            return bookingDB.UpdateDataSource();
         }
         #endregion
 
         #region Searching through a collection
 
         //This method receives a booking ref as a parameter; finds the booking object in the collection of bookings and then returns this object
-        public Booking Find(string bookRef)
+        public Booking Find(int bookRef)
         {
             int index = 0;
-            //check if it is the first booking
-           // bool found = (bookings[index].BookingRef == bookRef); 
-            int count = bookings.Count;
-           // while (!(found) && (index < bookings.Count - 1))  //if not "this" booking and you are not at the end of the list 
+            int found = 0;
+
+            //check if it is the first guest  
+            for (int i = 0; i < bookings.Count; i++)
             {
-                index = index + 1;
-                //found = (bookings[index].BookingRef == bookRef);   // this will be TRUE if found
+
+                if (bookRef == bookings[i].BookingRef)
+                {
+                    found += 1;
+                    index = i;
+                }
+
             }
-            return bookings[index];  // this is the one!  
+            if (found == 1)
+            {
+                return bookings[index];
+            }
+            else { return null; }
         }
 
         public int FindIndex(Booking aBooking)
@@ -106,6 +115,54 @@ namespace HotelGroupSystem.Business
         }
         #endregion
 
+        #region Generate Booking Reference
+        // Instantiate random number generator.    
+        private readonly Random _random = new Random();
 
+        // Generates a random number within a range.      
+        public int RandomNumber(int min, int max)
+        {
+            return _random.Next(min, max);
+        }
+
+        // Generates a random string with a given size.    
+        public string RandomString(int size, bool lowerCase = false)
+        {
+            var builder = new StringBuilder(size);
+
+            // The first group containing the uppercase letters and
+            // the second group containing the lowercase.  
+
+            // char is a single Unicode character  
+            char offset = lowerCase ? 'a' : 'A';
+            const int lettersOffset = 26; 
+
+            for (var i = 0; i < size; i++)
+            {
+                var @char = (char)_random.Next(offset, offset + lettersOffset);
+                builder.Append(@char);
+            }
+
+            return lowerCase ? builder.ToString().ToLower() : builder.ToString();
+        }
+
+        // Generates a random booking reference.  
+        // 2-LowerCase + 3-Digits + 2-UpperCase  
+        public string BookingRef()
+        {
+            var referenceBuilder = new StringBuilder();
+
+            // 2-Letters lower case   
+            referenceBuilder.Append(RandomString(2, true));
+
+            // 3-Digits between 100 and 999  
+            referenceBuilder.Append(RandomNumber(100, 999));
+
+            // 2-Letters upper case  
+            referenceBuilder.Append(RandomString(2));
+            return referenceBuilder.ToString();
+
+        }
+        #endregion
     }
-}
+} 
