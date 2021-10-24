@@ -115,7 +115,7 @@ namespace HotelGroupSystem
             booking.CheckOutDate = Convert.ToDateTime(checkOutTxt.Text);
             booking.RoomRate = Convert.ToDecimal(rateTxt.Text);
             booking.RoomsBooked = Convert.ToInt32(roomTxt.Text);
-            booking.TotalDue = Convert.ToDecimal(totalTxt.Text);
+            booking.Deposit = Convert.ToDecimal(totalTxt.Text);
             booking.GuestId = Convert.ToInt32(guestIdTxt.Text);
             booking.CreditCardNo = Convert.ToInt32(cardNoTxt.Text);
             booking.BankName = Convert.ToString(bankTxt.Text);

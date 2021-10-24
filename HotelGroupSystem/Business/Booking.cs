@@ -23,7 +23,7 @@ namespace HotelGroupSystem.Business
         //Rooms booked and total amount due
         private int roomsBooked;
         private decimal roomRate;
-        private decimal totalDue;
+        private decimal deposit;
 
         //Discount
         public int discountId;
@@ -67,10 +67,10 @@ namespace HotelGroupSystem.Business
             set { roomRate = value; }
         }
 
-        public decimal TotalDue
+        public decimal Deposit
         {
-            get { return totalDue; }
-            set { totalDue = value; }
+            get { return deposit; }
+            set { deposit = value; }
         }
 
         public DateTime CheckInDate
@@ -117,7 +117,7 @@ namespace HotelGroupSystem.Business
             guestId = gId;
             roomsBooked = rooms;
             roomRate = rate;
-            totalDue = total;
+            deposit = total;
             discountId = discountid;
             checkInDate = checkIn;
             checkOutDate = checkOut;

@@ -46,7 +46,7 @@ namespace HotelGroupSystem.Presentation
                 booking.CheckOutDate = Convert.ToDateTime(checkOutTxt.Text);
                 booking.RoomsBooked = Convert.ToInt32(roomTxt.Text);
                 booking.RoomRate = Convert.ToDecimal(rateTxt.Text);
-                booking.TotalDue = Convert.ToDecimal(totalTxt.Text);
+                booking.Deposit = Convert.ToDecimal(totalTxt.Text);
             }
             else //if not in database
             {
