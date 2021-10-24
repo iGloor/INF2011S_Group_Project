@@ -15,8 +15,9 @@ namespace HotelGroupSystem.Data
     class BookingDB : DB
     {
         #region Data Members
-        private string table1 = "Bookings";
-        private string sqlLocal1 = "SELECT * FROM Bookings";
+        private string table1 = "Booking";
+        private string sqlLocal1 = "SELECT * FROM Booking";
+
         private Collection<Booking> bookings;
         #endregion
 
@@ -28,18 +29,32 @@ namespace HotelGroupSystem.Data
                 return bookings;
             }
         }
+        
         #endregion
 
         #region Constructor
         public BookingDB() : base()
         {
             bookings = new Collection<Booking>();
-            FillDataSet(sqlLocal1, table1);
-            Add2Collection(table1);
+            RetrieveAllBookingsFromDB();
         }
         #endregion
 
         #region Utility Methods
+        public void RetrieveAllBookings()
+        {
+            dsMain.Tables["Booking"].Clear();
+            RetrieveAllBookingsFromDB();
+        }
+
+        public void RetrieveAllBookingsFromDB()
+        {
+            //fill data set
+            bookings = new Collection<Booking>();
+
+            FillDataSet(sqlLocal1, table1);
+            Add2Collection(table1);
+        }
         public DataSet GetDataSet()
         {
             return dsMain;
@@ -56,16 +71,17 @@ namespace HotelGroupSystem.Data
                 if (!(myRow.RowState == DataRowState.Deleted))
                 {
                     booking = new Booking();
-                    //booking.GuestID = Convert.ToString(myRow["ID"]).TrimEnd();
-
                     //Obtain each booking attribute from the specific field in the row in the table
-                   // booking.BookingRef = Convert.ToString(myRow["BookingReference"]).TrimEnd();
-                    booking.CheckInDate = Convert.ToDateTime(myRow["CheckInDate"]);
-                    booking.CheckOutDate = Convert.ToDateTime(myRow["CheckOutDate"]);
+                    booking.GuestId = Convert.ToInt32(myRow["GuestID"]);
+                    booking.ReferenceNumber = Convert.ToString(myRow["ReferenceNumber"]);
+                    booking.CheckInDate = Convert.ToDateTime(myRow["CheckIn"]);
+                    booking.CheckOutDate = Convert.ToDateTime(myRow["CheckOut"]);
                     booking.RoomsBooked = Convert.ToInt32(myRow["RoomsBooked"]);
                     booking.RoomRate = Convert.ToDecimal(myRow["RoomRate"]);
-                    booking.TotalDue = Convert.ToDecimal(myRow["TotalDue"]);
-
+                    booking.TotalDue = Convert.ToDecimal(myRow["Deposit"]);
+                    booking.DiscountId = Convert.ToInt32(myRow["DiscountID"]);
+                    booking.BankName = Convert.ToString(myRow["BankName"]);
+                    booking.CreditCardNo = Convert.ToInt32(myRow["CreditCardNumber"]);
                     //add booking to bookings collection
                     bookings.Add(booking);
 
@@ -73,21 +89,26 @@ namespace HotelGroupSystem.Data
             }
         }
 
+       
+
         private void FillRow(DataRow aRow, Booking aBooking, DB.DBOperation operation)
         {
             //Booking booking;
 
             if (operation == DB.DBOperation.Add)
             {
-                aRow["BookingReference"] = aBooking.BookingRef;  //NOTE square brackets to indicate index of collections of fields in row.
-               // aRow["GuestID"] = aBooking.GuestID;
+                aRow["ReferenceNumber"] = aBooking.ReferenceNumber;  //NOTE square brackets to indicate index of collections of fields in row.
+                
             }
-
+            aRow["GuestID"] = aBooking.GuestId;
+            aRow["DiscountID"] = aBooking.DiscountId;
             aRow["RoomsBooked"] = aBooking.RoomsBooked;
             aRow["RoomRate"] = aBooking.RoomRate;
-            aRow["TotalDue"] = aBooking.TotalDue;
-            aRow["ChekInDate"] = aBooking.CheckInDate;
-            aRow["ChekOutDate"] = aBooking.CheckOutDate;
+            aRow["Deposit"] = aBooking.TotalDue;
+            aRow["CheckIn"] = aBooking.CheckInDate;
+            aRow["CheckOut"] = aBooking.CheckOutDate;
+            aRow["BankName"] = aBooking.BankName;
+            aRow["CreditCardNumber"] = aBooking.CreditCardNo;
 
         }
 
@@ -103,7 +124,7 @@ namespace HotelGroupSystem.Data
                 if (!(myRow.RowState == DataRowState.Deleted))
                 {
                     //check if booking id equal to what we are looking for
-                 //   if (aBooking.BookingRef == Convert.ToString(dsMain.Tables[table].Rows[rowIndex]["BookingReference"]))
+                   if (aBooking.ReferenceNumber == Convert.ToString(dsMain.Tables[table].Rows[rowIndex]["ReferenceNumber"]))
                     {
                         returnValue = rowIndex;
                     }
@@ -149,26 +170,34 @@ namespace HotelGroupSystem.Data
         {
             //Create Parameters to communicate with SQL INSERT...add the input parameter and set its properties.
             SqlParameter param = default(SqlParameter);
-            param = new SqlParameter("@BookingReference", SqlDbType.NVarChar, 15, "BookingReference");
+            param = new SqlParameter("@ReferenceNumber", SqlDbType.VarChar, 10, "BookingReference");
             daMain.InsertCommand.Parameters.Add(param);//Add the parameter to the Parameters collection.
 
-            param = new SqlParameter("@GuestID", SqlDbType.NVarChar, 10, "GuestID");
+            param = new SqlParameter("@GuestID", SqlDbType.VarChar, 10, "GuestID");
             daMain.InsertCommand.Parameters.Add(param);
 
-
-            param = new SqlParameter("@RoomsBooked", SqlDbType.SmallInt, 100, "RoomsBooked");
+            param = new SqlParameter("@RoomsBooked", SqlDbType.Int, 5, "RoomsBooked");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@TotalDue", SqlDbType.Money, 15, "TotalDue");
+            param = new SqlParameter("@TotalDue", SqlDbType.Decimal, 15, "TotalDue");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@CheckInDate", SqlDbType.NVarChar, 10, "CheckInDate");
+            param = new SqlParameter("@CheckIn", SqlDbType.DateTime, 10, "CheckIn");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@CheckOutDate", SqlDbType.NVarChar, 10, "CheckOutDate");
+            param = new SqlParameter("@CheckOut", SqlDbType.DateTime, 10, "CheckOut");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@RoomRate", SqlDbType.Money, 10, "RoomRate");
+            param = new SqlParameter("@DiscountID", SqlDbType.Int, 10, "DiscountID");
+            daMain.InsertCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@RoomRate", SqlDbType.Decimal, 7, "RoomRate");
+            daMain.InsertCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@BankName", SqlDbType.VarChar, 100, "BankName");
+            daMain.InsertCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@CreditCardNumber", SqlDbType.Int, 10, "CreditCardNumber");
             daMain.InsertCommand.Parameters.Add(param);
         }
 
@@ -178,21 +207,43 @@ namespace HotelGroupSystem.Data
             //---Create Parameters to communicate with SQL UPDATE
             SqlParameter param = default(SqlParameter);
 
-            param = new SqlParameter("@RoomsBooked", SqlDbType.SmallInt, 10, "RoomsBooked");
+            param = new SqlParameter("@ReferenceNumber", SqlDbType.VarChar, 10, "ReferenceNumber");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            //create and add update check in date parameter
-            param = new SqlParameter("@CheckInDate", SqlDbType.NVarChar, 15, "CheckInDate");
-            param.SourceVersion = DataRowVersion.Current;
+            param = new SqlParameter("@GuestID", SqlDbType.VarChar, 10, "GuestID");
+            param.SourceVersion = DataRowVersion.Original;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@CheckOutDate", SqlDbType.NVarChar, 15, "CheckOutDate");
-            param.SourceVersion = DataRowVersion.Current;
+            param = new SqlParameter("@RoomsBooked", SqlDbType.Int, 5, "RoomsBooked");
+            param.SourceVersion = DataRowVersion.Original;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            //testing the booking reference of record that needs to change with the original booking reference of the record
-            param = new SqlParameter("@Original_BookingReference", SqlDbType.NVarChar, 15, "BookingReference");
+            param = new SqlParameter("@TotalDue", SqlDbType.Decimal, 15, "TotalDue");
+            param.SourceVersion = DataRowVersion.Original;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@CheckIn", SqlDbType.DateTime, 10, "CheckIn");
+            param.SourceVersion = DataRowVersion.Original;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@CheckOut", SqlDbType.DateTime, 10, "CheckOut");
+            param.SourceVersion = DataRowVersion.Original;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@DiscountID", SqlDbType.Int, 10, "DiscountID");
+            param.SourceVersion = DataRowVersion.Original;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@RoomRate", SqlDbType.Decimal, 7, "RoomRate");
+            param.SourceVersion = DataRowVersion.Original;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@BankName", SqlDbType.VarChar, 100, "BankName");
+            param.SourceVersion = DataRowVersion.Original;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@CreditCardNumber", SqlDbType.Int, 10, "CreditCardNumber");
             param.SourceVersion = DataRowVersion.Original;
             daMain.UpdateCommand.Parameters.Add(param);
 
@@ -202,7 +253,43 @@ namespace HotelGroupSystem.Data
         {
             //Create Parameters to communicate with SQL DELETE
             SqlParameter param;
-            param = new SqlParameter("@BookingReference", SqlDbType.NVarChar, 15, "BookingReference");
+            param = new SqlParameter("@ReferenceNumber", SqlDbType.VarChar, 10, "ReferenceNumber");
+            param.SourceVersion = DataRowVersion.Original;
+            daMain.DeleteCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@GuestID", SqlDbType.VarChar, 10, "GuestID");
+            param.SourceVersion = DataRowVersion.Original;
+            daMain.DeleteCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@RoomsBooked", SqlDbType.Int, 5, "RoomsBooked");
+            param.SourceVersion = DataRowVersion.Original;
+            daMain.DeleteCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@TotalDue", SqlDbType.Decimal, 15, "TotalDue");
+            param.SourceVersion = DataRowVersion.Original;
+            daMain.DeleteCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@CheckIn", SqlDbType.DateTime, 10, "CheckIn");
+            param.SourceVersion = DataRowVersion.Original;
+            daMain.DeleteCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@CheckOut", SqlDbType.DateTime, 10, "CheckOut");
+            param.SourceVersion = DataRowVersion.Original;
+            daMain.DeleteCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@DiscountID", SqlDbType.Int, 10, "DiscountID");
+            param.SourceVersion = DataRowVersion.Original;
+            daMain.DeleteCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@RoomRate", SqlDbType.Decimal, 7, "RoomRate");
+            param.SourceVersion = DataRowVersion.Original;
+            daMain.DeleteCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@BankName", SqlDbType.VarChar, 100, "BankName");
+            param.SourceVersion = DataRowVersion.Original;
+            daMain.DeleteCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@CreditCardNumber", SqlDbType.Int, 10, "CreditCardNumber");
             param.SourceVersion = DataRowVersion.Original;
             daMain.DeleteCommand.Parameters.Add(param);
         }
@@ -211,7 +298,8 @@ namespace HotelGroupSystem.Data
         {
             //Command used to insert values into the Bookings table..
 
-            daMain.InsertCommand = new SqlCommand("INSERT into Bookings (GuestID, BookingReference, RoomsBooked, RoomRate, TotalDue, CheckInDate, CheckOutDate) VALUES (@GuestID, @BookingReference, @RoomsBooked, @RoomRate, @TotalDue, @CheckInDate,CheckOutDate)", cnMain);
+            daMain.InsertCommand = new SqlCommand("INSERT into Booking (GuestID, ReferenceNumber, RoomsBooked, RoomRate, TotalDue, CheckIn, CheckOut, BankName, CreditCardNumber, DiscountID)" +
+                " VALUES (@GuestID, @ReferenceNumber, @RoomsBooked, @RoomRate, @TotalDue, @CheckIn, CheckOut, @BankName, @CreditCardNumber, @DiscountID)", cnMain);
             Build_INSERT_Parameters(aBooking);
         }
 
@@ -220,7 +308,7 @@ namespace HotelGroupSystem.Data
             //Command that must be used to insert values into bookings table
             //The GuestID and BookingReference cannot be changed
 
-            daMain.UpdateCommand = new SqlCommand("UPDATE Bookings SET RoomsBooked =@RoomsBooked, CheckInDate =@CheckInDate, CheckOutDate =@CheckOutDate " + "WHERE BookingReference = @Original_BookingReference", cnMain);
+            daMain.UpdateCommand = new SqlCommand("UPDATE Booking SET GuestID =@GuestID, ReferenceNumber =@ReferenceNumber, RoomsBooked =@RoomsBooked, RoomRate =@RoomRate, TotalDue =@TotalDue, CheckIn =@CheckIn, CheckOut =@CheckOut, BankName =@BankName, CreditCardNumber =@CreditCardNumber, DiscountID =@DiscountID" + "WHERE ReferenceNumber = @RReferenceNumber", cnMain);
             Build_UPDATE_Parameters(aBooking);
         }
 
@@ -228,7 +316,7 @@ namespace HotelGroupSystem.Data
         {
             string errorString = null;
             //Command used to delete values from the Bookings table
-            daMain.DeleteCommand = new SqlCommand("DELETE FROM Bookings WHERE BookingReference = @BookingReference", cnMain);
+            daMain.DeleteCommand = new SqlCommand("DELETE FROM Booking WHERE ReferenceNumber = @ReferenceNumber", cnMain);
   
             try
             {
@@ -249,6 +337,22 @@ namespace HotelGroupSystem.Data
             Create_UPDATE_Command(aBooking);
             Create_DELETE_Command(aBooking);
 
+            success = UpdateDataSource(sqlLocal1, table1);
+            return success;
+        }
+
+        public bool UpdateBookingDataSource(Booking booking)
+        {
+            bool success = true;
+            Create_UPDATE_Command(booking);
+            success = UpdateDataSource(sqlLocal1, table1);
+            return success;
+        }
+
+        public bool InsertBookingDataSource(Booking booking)
+        {
+            bool success = true;
+            Create_INSERT_Command(booking);
             success = UpdateDataSource(sqlLocal1, table1);
             return success;
         }

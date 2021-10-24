@@ -8,17 +8,17 @@ using HotelGroupSystem.Business;
 
 namespace HotelGroupSystem.Business
 {
-    class Booking
+    public class Booking
     {
         #region Data Members
         //Primary key
         private int bookingID;
 
         //booking reference
-        private int bookingRef;
+        private string referenceNumber;
 
         //Guest link
-        private Guest guest;
+        private int guestId;
 
         //Rooms booked and total amount due
         private int roomsBooked;
@@ -26,7 +26,7 @@ namespace HotelGroupSystem.Business
         private decimal totalDue;
 
         //Discount
-        public Discount discount;
+        public int discountId;
 
         //Check in and out dates
         private DateTime checkInDate;
@@ -43,9 +43,16 @@ namespace HotelGroupSystem.Business
         {
             get { return bookingID; }
         }
-        public int BookingRef
+        public string ReferenceNumber
         {
-            get { return bookingRef; }
+            get { return referenceNumber; }
+            set { referenceNumber = value; }
+        }
+
+        public int GuestId
+        {
+            get { return guestId; }
+            set { guestId = value; }
         }
 
         public int RoomsBooked
@@ -78,6 +85,12 @@ namespace HotelGroupSystem.Business
             set { checkOutDate = value; }
         }
 
+        public int DiscountId
+        {
+            get { return discountId; }
+            set { discountId = value; }
+        }
+
         public int CreditCardNo
         {
             get { return creditCardNo; }
@@ -97,14 +110,15 @@ namespace HotelGroupSystem.Business
         {
 
         }
-        public Booking(int bId, int bRef, int rooms, decimal rate, decimal total, Discount discountPercentage, DateTime checkIn, DateTime checkOut, int creditCard, string bName)
+        public Booking(int bId, string bRef, int gId, int rooms, decimal rate, decimal total, int discountid, DateTime checkIn, DateTime checkOut, int creditCard, string bName)
         {
             bookingID = bId;
-            bookingRef = bRef;
+            referenceNumber = bRef;
+            guestId = gId;
             roomsBooked = rooms;
             roomRate = rate;
             totalDue = total;
-            discount = discountPercentage;
+            discountId = discountid;
             checkInDate = checkIn;
             checkOutDate = checkOut;
             creditCardNo = creditCard;

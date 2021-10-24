@@ -29,13 +29,35 @@ namespace HotelGroupSystem.Business
         #region Constructor
         public BookingController()
         {
-            bookingDB = new BookingDB();
-            bookings = bookingDB.AllBookings;
+           // bookingDB = new BookingDB();
+           // bookings = bookingDB.AllBookings;
         }
-        
+
         #endregion
 
         #region Database Communication.
+        public Booking RecordBooking(Booking booking)
+        {
+            bookingDB = new BookingDB();
+            bookings = bookingDB.AllBookings;
+           
+            if (booking.BookingID == 0)
+            {
+                bookingDB.DataSetChange(booking, DB.DBOperation.Add);
+                bookingDB.InsertBookingDataSource(booking);
+            }
+            else
+            {
+                bookingDB.DataSetChange(booking, DB.DBOperation.Update);
+                bookingDB.UpdateBookingDataSource(booking);
+            }
+            bookingDB.RetrieveAllBookings();
+            bookings = bookingDB.AllBookings;
+            booking = bookings.First(x => x.ReferenceNumber == booking.ReferenceNumber);
+            return booking;
+        }
+        
+
         public void DataMaintenance(Booking aBooking, DB.DBOperation operation)
         {
             int index = 0;
@@ -75,12 +97,12 @@ namespace HotelGroupSystem.Business
         {
             int index = 0;
             //check if it is the first booking
-           // bool found = (bookings[index].BookingRef == bookRef); 
+          // bool found = (bookings[index].BookingRef= bookRef); 
             int count = bookings.Count;
-           // while (!(found) && (index < bookings.Count - 1))  //if not "this" booking and you are not at the end of the list 
+          // while (!(found) && (index < bookings.Count - 1))  //if not "this" booking and you are not at the end of the list 
             {
                 index = index + 1;
-                //found = (bookings[index].BookingRef == bookRef);   // this will be TRUE if found
+               // found = (bookings[index].BookingRef == bookRef);   // this will be TRUE if found
             }
             return bookings[index];  // this is the one!  
         }
@@ -89,11 +111,11 @@ namespace HotelGroupSystem.Business
         {
             int counter = 0;
             bool found = false;
-            found = (aBooking.BookingRef == bookings[counter].BookingRef);   //using a Boolean Expression to initialise found
+            found = (aBooking.ReferenceNumber == bookings[counter].ReferenceNumber);   //using a Boolean Expression to initialise found
             while (!(found) & counter < bookings.Count - 1)
             {
                 counter += 1;
-                found = (aBooking.BookingRef == bookings[counter].BookingRef);
+                found = (aBooking.ReferenceNumber == bookings[counter].ReferenceNumber);
             }
             if (found)
             {

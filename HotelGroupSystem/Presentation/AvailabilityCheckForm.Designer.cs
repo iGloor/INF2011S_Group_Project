@@ -39,6 +39,8 @@ namespace HotelGroupSystem.Presentation
             this.checkInLabel = new System.Windows.Forms.Label();
             this.checkOutLabel = new System.Windows.Forms.Label();
             this.feedbackLabel2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // monthCalendar1
@@ -48,7 +50,6 @@ namespace HotelGroupSystem.Presentation
             this.monthCalendar1.MaxSelectionCount = 31;
             this.monthCalendar1.MinDate = new System.DateTime(2021, 12, 1, 0, 0, 0, 0);
             this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.SelectionRange = new System.Windows.Forms.SelectionRange(new System.DateTime(2021, 12, 1, 0, 0, 0, 0), new System.DateTime(2021, 12, 31, 0, 0, 0, 0));
             this.monthCalendar1.ShowToday = false;
             this.monthCalendar1.ShowTodayCircle = false;
             this.monthCalendar1.TabIndex = 0;
@@ -76,16 +77,16 @@ namespace HotelGroupSystem.Presentation
             // summaryView
             // 
             this.summaryView.HideSelection = false;
-            this.summaryView.Location = new System.Drawing.Point(356, 79);
+            this.summaryView.Location = new System.Drawing.Point(345, 76);
             this.summaryView.Name = "summaryView";
-            this.summaryView.Size = new System.Drawing.Size(270, 207);
+            this.summaryView.Size = new System.Drawing.Size(357, 207);
             this.summaryView.TabIndex = 3;
             this.summaryView.UseCompatibleStateImageBehavior = false;
             this.summaryView.SelectedIndexChanged += new System.EventHandler(this.summaryView_SelectedIndexChanged);
             // 
             // checkBtn
             // 
-            this.checkBtn.Location = new System.Drawing.Point(94, 305);
+            this.checkBtn.Location = new System.Drawing.Point(94, 323);
             this.checkBtn.Name = "checkBtn";
             this.checkBtn.Size = new System.Drawing.Size(161, 40);
             this.checkBtn.TabIndex = 4;
@@ -95,7 +96,7 @@ namespace HotelGroupSystem.Presentation
             // 
             // newBookingBtn
             // 
-            this.newBookingBtn.Location = new System.Drawing.Point(356, 305);
+            this.newBookingBtn.Location = new System.Drawing.Point(356, 323);
             this.newBookingBtn.Name = "newBookingBtn";
             this.newBookingBtn.Size = new System.Drawing.Size(161, 40);
             this.newBookingBtn.TabIndex = 5;
@@ -105,7 +106,7 @@ namespace HotelGroupSystem.Presentation
             // 
             // updateBookingBtn
             // 
-            this.updateBookingBtn.Location = new System.Drawing.Point(541, 305);
+            this.updateBookingBtn.Location = new System.Drawing.Point(541, 323);
             this.updateBookingBtn.Name = "updateBookingBtn";
             this.updateBookingBtn.Size = new System.Drawing.Size(161, 40);
             this.updateBookingBtn.TabIndex = 6;
@@ -140,11 +141,31 @@ namespace HotelGroupSystem.Presentation
             this.feedbackLabel2.TabIndex = 9;
             this.feedbackLabel2.Text = "to";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(349, 286);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(266, 17);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Maximum rooms available for the period: ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(622, 286);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 17);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "label2";
+            // 
             // AvailabilityCheckForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.feedbackLabel2);
             this.Controls.Add(this.checkOutLabel);
             this.Controls.Add(this.checkInLabel);
@@ -175,5 +196,7 @@ namespace HotelGroupSystem.Presentation
         private System.Windows.Forms.Label checkInLabel;
         private System.Windows.Forms.Label checkOutLabel;
         private System.Windows.Forms.Label feedbackLabel2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

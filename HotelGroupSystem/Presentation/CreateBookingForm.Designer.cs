@@ -65,6 +65,7 @@ namespace HotelGroupSystem
             this.discountCodeTxt = new System.Windows.Forms.TextBox();
             this.surnameTxt = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.saveGuestBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -200,7 +201,7 @@ namespace HotelGroupSystem
             // 
             // checkGuestBtn
             // 
-            this.checkGuestBtn.Location = new System.Drawing.Point(440, 198);
+            this.checkGuestBtn.Location = new System.Drawing.Point(419, 193);
             this.checkGuestBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkGuestBtn.Name = "checkGuestBtn";
             this.checkGuestBtn.Size = new System.Drawing.Size(163, 31);
@@ -229,6 +230,7 @@ namespace HotelGroupSystem
             this.cancelBtn.TabIndex = 16;
             this.cancelBtn.Text = "Cancel Booking";
             this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // roomTxt
             // 
@@ -386,11 +388,22 @@ namespace HotelGroupSystem
             this.label16.TabIndex = 35;
             this.label16.Text = "Surname";
             // 
+            // saveGuestBtn
+            // 
+            this.saveGuestBtn.Location = new System.Drawing.Point(629, 193);
+            this.saveGuestBtn.Name = "saveGuestBtn";
+            this.saveGuestBtn.Size = new System.Drawing.Size(154, 31);
+            this.saveGuestBtn.TabIndex = 36;
+            this.saveGuestBtn.Text = "Save Guest";
+            this.saveGuestBtn.UseVisualStyleBackColor = true;
+            this.saveGuestBtn.Click += new System.EventHandler(this.saveGuestBtn_Click);
+            // 
             // HomePageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 540);
+            this.Controls.Add(this.saveGuestBtn);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.surnameTxt);
             this.Controls.Add(this.discountCodeTxt);
@@ -477,6 +490,7 @@ namespace HotelGroupSystem
         private System.Windows.Forms.TextBox discountCodeTxt;
         private System.Windows.Forms.TextBox surnameTxt;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button saveGuestBtn;
     }
 }
 

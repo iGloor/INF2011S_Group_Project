@@ -58,10 +58,12 @@
     <Compile Include="Business\Room.cs" />
     <Compile Include="Business\AvailableRooms.cs" />
     <Compile Include="Business\RoomRate.cs" />
+    <Compile Include="Business\RoomRateController.cs" />
     <Compile Include="Data\BookingDB.cs" />
     <Compile Include="Data\CalendarDB.cs" />
     <Compile Include="Data\DB.cs" />
     <Compile Include="Data\GuestDB.cs" />
+    <Compile Include="Data\RoomRateDB.cs" />
     <Compile Include="HotelSystemDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

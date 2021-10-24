@@ -39,7 +39,6 @@ namespace HotelGroupSystem.Presentation
             this.occupancyReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seasonalSummaryReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.occupancyListView = new System.Windows.Forms.ListView();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,7 +58,7 @@ namespace HotelGroupSystem.Presentation
             // availabilityCheckToolStripMenuItem
             // 
             this.availabilityCheckToolStripMenuItem.Name = "availabilityCheckToolStripMenuItem";
-            this.availabilityCheckToolStripMenuItem.Size = new System.Drawing.Size(140, 24);
+            this.availabilityCheckToolStripMenuItem.Size = new System.Drawing.Size(140, 26);
             this.availabilityCheckToolStripMenuItem.Text = "Availability Check";
             this.availabilityCheckToolStripMenuItem.Click += new System.EventHandler(this.availabilityCheckToolStripMenuItem_Click);
             // 
@@ -70,27 +69,27 @@ namespace HotelGroupSystem.Presentation
             this.updateBookingToolStripMenuItem,
             this.makeAnEnquiryToolStripMenuItem});
             this.bookingsToolStripMenuItem.Name = "bookingsToolStripMenuItem";
-            this.bookingsToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
+            this.bookingsToolStripMenuItem.Size = new System.Drawing.Size(84, 26);
             this.bookingsToolStripMenuItem.Text = "Bookings";
             // 
             // newBookingToolStripMenuItem
             // 
             this.newBookingToolStripMenuItem.Name = "newBookingToolStripMenuItem";
-            this.newBookingToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.newBookingToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
             this.newBookingToolStripMenuItem.Text = "New Booking";
             this.newBookingToolStripMenuItem.Click += new System.EventHandler(this.newBookingToolStripMenuItem_Click);
             // 
             // updateBookingToolStripMenuItem
             // 
             this.updateBookingToolStripMenuItem.Name = "updateBookingToolStripMenuItem";
-            this.updateBookingToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.updateBookingToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
             this.updateBookingToolStripMenuItem.Text = "Update Booking";
             this.updateBookingToolStripMenuItem.Click += new System.EventHandler(this.updateBookingToolStripMenuItem_Click);
             // 
             // makeAnEnquiryToolStripMenuItem
             // 
             this.makeAnEnquiryToolStripMenuItem.Name = "makeAnEnquiryToolStripMenuItem";
-            this.makeAnEnquiryToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.makeAnEnquiryToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
             this.makeAnEnquiryToolStripMenuItem.Text = "Make an Enquiry";
             this.makeAnEnquiryToolStripMenuItem.Click += new System.EventHandler(this.makeAnEnquiryToolStripMenuItem_Click);
             // 
@@ -100,7 +99,7 @@ namespace HotelGroupSystem.Presentation
             this.occupancyReportToolStripMenuItem,
             this.seasonalSummaryReportToolStripMenuItem});
             this.generateReportToolStripMenuItem.Name = "generateReportToolStripMenuItem";
-            this.generateReportToolStripMenuItem.Size = new System.Drawing.Size(132, 24);
+            this.generateReportToolStripMenuItem.Size = new System.Drawing.Size(132, 26);
             this.generateReportToolStripMenuItem.Text = "Generate Report";
             // 
             // occupancyReportToolStripMenuItem
@@ -119,28 +118,19 @@ namespace HotelGroupSystem.Presentation
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(65, 87);
+            this.monthCalendar1.Location = new System.Drawing.Point(53, 74);
             this.monthCalendar1.MaxDate = new System.DateTime(2021, 12, 31, 0, 0, 0, 0);
+            this.monthCalendar1.MaxSelectionCount = 31;
             this.monthCalendar1.MinDate = new System.DateTime(2021, 12, 1, 0, 0, 0, 0);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 1;
             this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged_1);
-            // 
-            // occupancyListView
-            // 
-            this.occupancyListView.HideSelection = false;
-            this.occupancyListView.Location = new System.Drawing.Point(416, 87);
-            this.occupancyListView.Name = "occupancyListView";
-            this.occupancyListView.Size = new System.Drawing.Size(210, 207);
-            this.occupancyListView.TabIndex = 2;
-            this.occupancyListView.UseCompatibleStateImageBehavior = false;
             // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 534);
-            this.Controls.Add(this.occupancyListView);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -167,6 +157,5 @@ namespace HotelGroupSystem.Presentation
         private System.Windows.Forms.ToolStripMenuItem makeAnEnquiryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem seasonalSummaryReportToolStripMenuItem;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
-        private System.Windows.Forms.ListView occupancyListView;
     }
 }

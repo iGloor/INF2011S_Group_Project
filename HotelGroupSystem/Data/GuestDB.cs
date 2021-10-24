@@ -31,16 +31,28 @@ namespace HotelGroupSystem.Data
 
         #region Constructor
         public GuestDB() : base()
-        {
-            //instantiate guest collection
-            guests = new Collection<Guest>();
-            //fill data set
-            FillDataSet(sqlLocal1, table1);
-            Add2Collection(table1);
+        {           
+            RetrieveAllGuestsFromDB();
         }
         #endregion
 
         #region Utility Methods
+
+        public void RetrieveAllGuests()
+        {
+            dsMain.Tables["Guest"].Clear();
+            RetrieveAllGuestsFromDB();
+        }
+
+        public void RetrieveAllGuestsFromDB()
+        {
+            //fill data set
+            guests = new Collection<Guest>();
+            
+            FillDataSet(sqlLocal1, table1);
+            Add2Collection(table1);
+        }
+
         public DataSet GetDataSet()
         {
             return dsMain;
@@ -99,8 +111,8 @@ namespace HotelGroupSystem.Data
                 //Ignore rows marked as deleted in dataset
                 if (!(myRow.RowState == DataRowState.Deleted))
                 {
-                    //check if guest id equal to what we are looking for
-                    //if (aGuest.getGuestID == Convert.ToInt32(dsMain.Tables[table].Rows[rowIndex]["GuestID"]))
+                    ///check if guest id equal to what we are looking for
+                    if (aGuest.GuestID == Convert.ToInt32(dsMain.Tables[table].Rows[rowIndex]["GuestID"]))
                     {
                         returnValue = rowIndex;
                     }
@@ -208,7 +220,7 @@ namespace HotelGroupSystem.Data
 
             //testing the booking reference of record that needs to change with the original guestID of the record
             param = new SqlParameter("@GuestID", SqlDbType. Int, 15, "GuestID");
-            param.SourceVersion = DataRowVersion.Original;
+            param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
         }
@@ -235,7 +247,7 @@ namespace HotelGroupSystem.Data
             //Command that must be used to insert values into bookings table
             //The GuestID and BookingReference cannot be changed
 
-            daMain.UpdateCommand = new SqlCommand("UPDATE Guest SET FirstName = @FirstNem, Surname = @Surname, Address =@Address, Email = @Email Phone =@Phone " + "WHERE GuestID = @GuestID", cnMain);
+            daMain.UpdateCommand = new SqlCommand("UPDATE Guest SET FirstName = @FirstName, Surname = @Surname, Address =@Address, Email = @Email, Phone =@Phone " + "WHERE GuestID = @GuestID", cnMain);
             Build_UPDATE_Parameters(aGuest);
         }
 
@@ -264,6 +276,22 @@ namespace HotelGroupSystem.Data
             Create_UPDATE_Command(aGuest);
             Create_DELETE_Command(aGuest);
 
+            success = UpdateDataSource(sqlLocal1, table1);
+            return success;
+        }
+
+        public bool UpdateGuestDataSource(Guest aGuest)
+        {
+            bool success = true;
+            Create_UPDATE_Command(aGuest);
+            success = UpdateDataSource(sqlLocal1, table1);
+            return success;
+        }
+
+        public bool InsertGuestDataSource(Guest aGuest)
+        {
+            bool success = true;
+            Create_INSERT_Command(aGuest);
             success = UpdateDataSource(sqlLocal1, table1);
             return success;
         }

@@ -18,6 +18,7 @@ namespace HotelGroupSystem.Presentation
         AvailabilityCheckForm availabilityCheckForm;
         BookingDetails bookingDetails;
 
+        BookingController bookingController;
         #endregion
 
         #region Property Methods
@@ -36,6 +37,22 @@ namespace HotelGroupSystem.Presentation
         #endregion
 
         #region Utility Methods
+        
+        public void PopulateBooking(Booking booking)
+        {
+            if (refNumberTxt.Text == booking.ReferenceNumber)
+            {   // booking.BookingRef = 
+                booking.CheckInDate = Convert.ToDateTime(checkInTxt.Text);
+                booking.CheckOutDate = Convert.ToDateTime(checkOutTxt.Text);
+                booking.RoomsBooked = Convert.ToInt32(roomTxt.Text);
+                booking.RoomRate = Convert.ToDecimal(rateTxt.Text);
+                booking.TotalDue = Convert.ToDecimal(totalTxt.Text);
+            }
+            else //if not in database
+            {
+                MessageBox.Show("The guest you entered is not in our database.", "Sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void ShowAll()
         {
             //Hide the following:
@@ -109,6 +126,8 @@ namespace HotelGroupSystem.Presentation
         {
             checkInTxt.Text = AvailabilityCheckForm.setValueForCheckIn;
             checkOutTxt.Text = AvailabilityCheckForm.setValueForCheckOut;
+            roomTxt.Text = AvailabilityCheckForm.setValueForRooms;
+            rateTxt.Text = AvailabilityCheckForm.setValueForRate;
         }
 
         private void checkRefNoBtn_Click(object sender, EventArgs e)
@@ -120,14 +139,16 @@ namespace HotelGroupSystem.Presentation
         private void checkDatesBtn_Click(object sender, EventArgs e)
         {
             //Open availability check form
-           // availabilityCheckForm = new AvailabilityCheckForm();
-            //availabilityCheckForm.Show();
+            availabilityCheckForm = new AvailabilityCheckForm();
+            availabilityCheckForm.Show();
         }
 
         private void UpdateBookingForm_Activated(object sender, EventArgs e)
         {
             checkInTxt.Text = AvailabilityCheckForm.setValueForCheckIn;
             checkOutTxt.Text = AvailabilityCheckForm.setValueForCheckOut;
+            roomTxt.Text = AvailabilityCheckForm.setValueForRooms;
+            rateTxt.Text = AvailabilityCheckForm.setValueForRate;
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
@@ -152,7 +173,10 @@ namespace HotelGroupSystem.Presentation
 
         private void calculateAmountBtn_Click(object sender, EventArgs e)
         {
-            
+            int rooms = Convert.ToInt32(roomTxt.Text);
+            int rate = Convert.ToInt32(rateTxt.Text);
+            int total = rooms * rate;
+            totalTxt.Text = total.ToString();
         }
 
         private void enquireBtn_Click(object sender, EventArgs e)

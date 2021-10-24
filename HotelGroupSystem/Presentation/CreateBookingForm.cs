@@ -20,10 +20,15 @@ namespace HotelGroupSystem
         #region Declare Variables
         AvailabilityCheckForm availabilityCheckForm;
         BookingDetails bookingDetails;
-        private Guest guest;
+
         private GuestController guestController;
 
+        private BookingController bookingController;
+
         private int guestId;
+
+        public string duration;
+        public string refNo;
 
         #endregion
 
@@ -36,22 +41,34 @@ namespace HotelGroupSystem
             InitializeComponent();
             //booking controller
 
-            //guest controller
-            guestController = new GuestController();
-            guestController.Find(guestId);
+            
+
         }
         #endregion
 
-        #region Events
-        #endregion
-
         #region Utility Methods
-        //Retrieve guest details
+        public decimal TotalAmountDue()
+        {
+            int rooms = Convert.ToInt32(roomTxt.Text);
+            int rate = Convert.ToInt32(rateTxt.Text);
+            int stay = Convert.ToInt32(duration);
+            decimal total = rooms * rate * stay;
+            totalTxt.Text = total.ToString();
+            return total;
+            
+        }
 
+        public string CreateBookingReference()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            refNo = stringBuilder.Append(surnameTxt.Text).Append(firstNameTxt.Text).ToString(0, 3);
+            return refNo;
+        }
+
+        
         private void PopulateGuestDetails(Guest guest)
         {
 
-            guest = guestController.Find(Convert.ToInt32(guestIdTxt.Text));
 
             //check if guest is is database by using id textbox
             if (guest != null)
@@ -67,24 +84,53 @@ namespace HotelGroupSystem
             }
             else //if not in database
             {
-                MessageBox.Show("The guest you entered is not in our database");
+                MessageBox.Show("The guest you entered is not in our database.", "Sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
                         
         }
         //Store guest details
-        private void StoreGuestDetails()
+        private Guest StoreGuestDetails()
         {
-            firstNameTxt.Text = guest.FirstName;
-            surnameTxt.Text = guest.Surname;
-            addressTxt.Text = guest.Address;
-            emailTxt.Text = guest.Email;
-            phoneTxt.Text = guest.Phone;
+            Guest guest = new Guest();
+            if (guestIdTxt.Text.Length > 0)
+            {
+                guest.GuestID = Convert.ToInt32(guestIdTxt.Text);
+            }
+            guest.FirstName = Convert.ToString(firstNameTxt.Text);
+            guest.Surname = Convert.ToString(surnameTxt.Text);
+            guest.Address = Convert.ToString(addressTxt.Text);
+            guest.Email = Convert.ToString(emailTxt.Text);
+            guest.Phone = Convert.ToString(phoneTxt.Text);
+
+            guestController = new GuestController();
+            guest = guestController.RecordGuest(guest);
+            return guest;
+        }
+
+        private Booking StoreBookingDetails()
+        {
+            Booking booking = new Booking();
+            booking.ReferenceNumber = CreateBookingReference();
+            booking.CheckInDate = Convert.ToDateTime(checkInTxt.Text);
+            booking.CheckOutDate = Convert.ToDateTime(checkOutTxt.Text);
+            booking.RoomRate = Convert.ToDecimal(rateTxt.Text);
+            booking.RoomsBooked = Convert.ToInt32(roomTxt.Text);
+            booking.TotalDue = Convert.ToDecimal(totalTxt.Text);
+            booking.GuestId = Convert.ToInt32(guestIdTxt.Text);
+            booking.CreditCardNo = Convert.ToInt32(cardNoTxt.Text);
+            booking.BankName = Convert.ToString(bankTxt.Text);
+
+            bookingController = new BookingController();
+            booking = bookingController.RecordBooking(booking);
+            return booking;
         }
         #endregion
 
         private void confirmBookingBtn_Click(object sender, EventArgs e)
         {
-            //Call reference number method
+            //Save guest to database
+            Booking booking = StoreBookingDetails();
+            
 
             //Show message box with reference number
             MessageBox.Show("Your booking has been saved, your reference number is ...");
@@ -98,22 +144,33 @@ namespace HotelGroupSystem
 
         private void checkGuestBtn_Click(object sender, EventArgs e)
         {
+            firstNameTxt.Clear();
+            surnameTxt.Clear();
+            addressTxt.Clear();
+            emailTxt.Clear();
+            phoneTxt.Clear();
             //check if guest is is database by using id textbox
             //if guest found, populate text boxes
             //if not in database
             // MessageBox.Show("The guest you entered is not in our database");
+            Guest guest = null;
 
             guestId = Convert.ToInt32(guestIdTxt.Text);
             GuestController guestController = new GuestController();
-            guestController.Find(guestId);
+            guest = guestController.Find(guestId);
             
+            
+
             PopulateGuestDetails(guest);
 
         }
 
+        
+
         private void calcAmountBtn_Click(object sender, EventArgs e)
         {
             //Call method to calculate total amount due (rooms * rate)
+            TotalAmountDue();
         }
 
         private void checkDatesBtn_Click(object sender, EventArgs e)
@@ -127,17 +184,36 @@ namespace HotelGroupSystem
         {
             checkInTxt.Text = AvailabilityCheckForm.setValueForCheckIn;
             checkOutTxt.Text = AvailabilityCheckForm.setValueForCheckOut;
+            roomTxt.Text = AvailabilityCheckForm.setValueForRooms;
+            rateTxt.Text = AvailabilityCheckForm.setValueForRate;
+            duration = AvailabilityCheckForm.setValueForDuration;
         }
 
         private void HomePageForm_Activated(object sender, EventArgs e)
         {
             checkInTxt.Text = AvailabilityCheckForm.setValueForCheckIn;
             checkOutTxt.Text = AvailabilityCheckForm.setValueForCheckOut;
+            roomTxt.Text = AvailabilityCheckForm.setValueForRooms;
+            rateTxt.Text = AvailabilityCheckForm.setValueForRate;
+            duration = AvailabilityCheckForm.setValueForDuration;
         }
 
         private void HomePageForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void saveGuestBtn_Click(object sender, EventArgs e)
+        {
+            
+            Guest guest = StoreGuestDetails();
+            PopulateGuestDetails(guest);
+
         }
     }
 }

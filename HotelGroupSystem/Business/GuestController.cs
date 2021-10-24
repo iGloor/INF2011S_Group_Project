@@ -28,8 +28,8 @@ namespace HotelGroupSystem.Business
         #region Constructor
         public GuestController()
         {
-            guestDB = new GuestDB();
-            guests = guestDB.AllGuests;
+            //guestDB = new GuestDB();
+            //guests = guestDB.AllGuests;
         }
 
         #endregion
@@ -40,6 +40,28 @@ namespace HotelGroupSystem.Business
         #endregion
 
         #region Database Communication.
+
+        public Guest RecordGuest(Guest guest)
+        {
+            guestDB = new GuestDB();
+            guests = guestDB.AllGuests;
+
+            if (guest.GuestID == 0)
+            {
+                guestDB.DataSetChange(guest, DB.DBOperation.Add);
+                guestDB.InsertGuestDataSource(guest);
+            }
+            else
+            {
+                guestDB.DataSetChange(guest, DB.DBOperation.Update);
+                guestDB.UpdateGuestDataSource(guest);
+            }
+            guestDB.RetrieveAllGuests();
+            guests = guestDB.AllGuests;
+            guest = guests.First(x => x.Surname == guest.Surname && x.FirstName == guest.FirstName);
+            return guest;
+        }
+
         public void DataMaintenance(Guest aGuest, DB.DBOperation operation)
         {
             int index = 0;
@@ -77,16 +99,14 @@ namespace HotelGroupSystem.Business
         //This method receives a Guest ID as a parameter; finds the booking object in the collection of guests and then returns this object
         public Guest Find(int gID)
         {
-            int index = 0;
-            //check if it is the first guest
-            bool found = (guests[index].GuestID == gID);
-            int count = guests.Count;
-            while (!(found) && (index < guests.Count - 1))
-            { 
-                index = index + 1;
-                found = (guests[index].GuestID == gID);   // this will be TRUE if found
-            }
-            return guests[index];  
+            GuestDB guestDB = new GuestDB();
+            guests = guestDB.AllGuests;
+            Guest foundGuest = null;
+            if (guests.Any(x => x.GuestID == gID))
+            {
+                foundGuest = guests.First(x => x.GuestID == gID);
+            }            
+            return foundGuest;  
         }
 
         public int FindIndex(Guest aGuest)

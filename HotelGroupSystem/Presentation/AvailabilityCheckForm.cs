@@ -40,11 +40,21 @@ namespace HotelGroupSystem.Presentation
         private Collection<BookingCalendar> allBookingCalendars;
 
         //Pass info to form 2
-        public static string setValueForCheckIn = "";
-        public static string setValueForCheckOut = "";
+        public static string setValueForCheckIn = " ";
+        public static string setValueForCheckOut = " ";
+        public static string setValueForRooms = " ";
+        public static string setValueForRate = " ";
+        public static string setValueForDuration = " ";
 
         DateTime checkInDate;
         DateTime checkOutDate;
+
+        private RoomRate roomRate;
+        private RoomRateController roomRateController;
+
+        private int minimumRoomAmount = -1;
+
+        
 
         #endregion
 
@@ -61,13 +71,19 @@ namespace HotelGroupSystem.Presentation
             monthCalendar1.DateSelected += monthCalendar1_DateSelected;
             monthCalendar1.DateChanged += monthCalendar1_DateChanged;
 
-            bookingCalendarController = new BookingCalendarController();
-            bookingCalendarController.GetRoomsAvailable(checkInDate, checkOutDate);
-
+            
         }
         #endregion
 
         #region Methods
+
+        public int GetStayDuration()
+        {
+            DateTime startDate = monthCalendar1.SelectionStart.Date;
+            DateTime endDate = monthCalendar1.SelectionEnd.Date;
+            int duration = endDate.Subtract(startDate).Days;
+            return duration;
+        }
 
         public void HideFeedback()
         {
@@ -77,6 +93,8 @@ namespace HotelGroupSystem.Presentation
             checkOutLabel.Hide();
             newBookingBtn.Hide();
             updateBookingBtn.Hide();
+            label1.Hide();
+            label2.Hide();
         }
 
         public void ShowFeedback()
@@ -87,13 +105,15 @@ namespace HotelGroupSystem.Presentation
             checkOutLabel.Show();
             newBookingBtn.Show();
             updateBookingBtn.Show();
+            label1.Show();
+            label2.Show();
         }
 
         public void GetDetails()
         {
             setValueForCheckIn = monthCalendar1.SelectionStart.Date.ToShortDateString();
             setValueForCheckOut = monthCalendar1.SelectionEnd.Date.ToShortDateString();
-
+            setValueForDuration = GetStayDuration().ToString();
             checkInDate = monthCalendar1.SelectionStart.Date;
             checkOutDate = monthCalendar1.SelectionEnd.Date;
             //Rooms which are available:
@@ -102,11 +122,16 @@ namespace HotelGroupSystem.Presentation
         public void DisplayDetails()
         {
             GetDetails();
-
             checkInLabel.Text = setValueForCheckIn;
             checkOutLabel.Text = setValueForCheckOut;
-
             ShowFeedback();
+        }
+
+        public void GetRoomRate()
+        {
+            roomRateController = new RoomRateController();
+            decimal rate = roomRateController.ComputeRateForPeriod(checkInDate, checkOutDate);
+            setValueForRate = rate.ToString();
         }
 
         public void setUpBookingCalendarListView()
@@ -127,13 +152,18 @@ namespace HotelGroupSystem.Presentation
 
             foreach (AvailableRooms availableRooms in allAvailableRooms)
             {
+                if ((minimumRoomAmount == -1)||(availableRooms.RoomsAvailable < minimumRoomAmount))
+                {
+                    minimumRoomAmount = availableRooms.RoomsAvailable;
+                }
                 bookingCalendarDetails = new ListViewItem(availableRooms.CalendarDate.ToString("yyyy/MM/dd"));
                 bookingCalendarDetails.SubItems.Add(availableRooms.RoomsAvailable.ToString());
                 summaryView.Items.Add(bookingCalendarDetails);
-                
             }
             summaryView.Refresh();
             summaryView.GridLines = true;
+            label2.Text = minimumRoomAmount.ToString();
+            setValueForRooms = minimumRoomAmount.ToString();
         }
 
         //Populate employee object method
@@ -160,10 +190,21 @@ namespace HotelGroupSystem.Presentation
 
         private void checkBtn_Click(object sender, EventArgs e)
         {
-            DisplayDetails();
+            
+            checkInDate = monthCalendar1.SelectionStart.Date;
+            checkOutDate = monthCalendar1.SelectionEnd.Date;
 
+            bookingCalendarController = new BookingCalendarController();
+            bookingCalendarController.GetRoomsAvailable(checkInDate, checkOutDate);
+
+            roomRateController = new RoomRateController();
+            roomRateController.ComputeRateForPeriod(checkInDate, checkOutDate);
+
+
+            DisplayDetails();
             setUpBookingCalendarListView();
-        }
+            GetRoomRate();
+    }
 
         private void newBookingBtn_Click(object sender, EventArgs e)
         {
@@ -176,8 +217,6 @@ namespace HotelGroupSystem.Presentation
                 HomePageForm.ActiveForm.Update();
                 HomePageForm.ActiveForm.Focus();
                
-                //createBookingForm.Focus();
-
                 //Close this form
                 this.Close();
             }
