@@ -111,6 +111,8 @@ namespace HotelGroupSystem.Presentation
             this.Controls.Add(this.label1);
             this.Name = "BookingDetails";
             this.Text = "Booking Details";
+            this.Activated += new System.EventHandler(this.BookingDetails_Activated);
+            this.Load += new System.EventHandler(this.BookingDetails_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

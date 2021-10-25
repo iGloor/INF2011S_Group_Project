@@ -1,0 +1,86 @@
+2021/10/22 13:46:55	This log contains information about the import schema operation into project 'HotelDatabase' on computer 'LAPTOP-33MMMAJU' by user 'isabe'.
+2021/10/22 13:46:55	Import of database schema has started.
+2021/10/22 13:47:01	Gathering database credentials
+2021/10/22 13:47:01	Gathering database options
+2021/10/22 13:47:01	Gathering generic database scoped configuration option
+2021/10/22 13:47:01	Gathering users
+2021/10/22 13:47:01	Gathering roles
+2021/10/22 13:47:01	Gathering application roles
+2021/10/22 13:47:01	Gathering role memberships
+2021/10/22 13:47:01	Gathering filegroups
+2021/10/22 13:47:01	Gathering full-text catalogs
+2021/10/22 13:47:01	Gathering assemblies
+2021/10/22 13:47:01	Gathering certificates
+2021/10/22 13:47:01	Gathering asymmetric keys
+2021/10/22 13:47:01	Gathering symmetric keys
+2021/10/22 13:47:01	Gathering encrypted symmetric keys
+2021/10/22 13:47:01	Gathering schemas
+2021/10/22 13:47:01	Gathering XML schema collections
+2021/10/22 13:47:01	Gathering user-defined data types
+2021/10/22 13:47:01	Gathering user-defined types
+2021/10/22 13:47:01	Gathering table types
+2021/10/22 13:47:01	Gathering unique keys for table types
+2021/10/22 13:47:01	Gathering primary keys for table types
+2021/10/22 13:47:01	Gathering indexes for table types
+2021/10/22 13:47:01	Gathering check constraints for table types
+2021/10/22 13:47:01	Gathering default constraints for table types
+2021/10/22 13:47:01	Gathering partition functions
+2021/10/22 13:47:01	Gathering partition schemes
+2021/10/22 13:47:01	Gathering functions
+2021/10/22 13:47:01	Gathering encrypted functions
+2021/10/22 13:47:01	Gathering aggregates
+2021/10/22 13:47:01	Gathering procedures
+2021/10/22 13:47:01	Gathering encrypted procedures
+2021/10/22 13:47:01	Gathering tables
+2021/10/22 13:47:01	Gathering primary keys
+2021/10/22 13:47:01	Gathering unique constraints
+2021/10/22 13:47:01	Gathering foreign keys
+2021/10/22 13:47:01	Gathering default constraints
+2021/10/22 13:47:01	Gathering check constraints
+2021/10/22 13:47:01	Gathering views
+2021/10/22 13:47:01	Gathering encrypted views
+2021/10/22 13:47:01	Gathering indexes
+2021/10/22 13:47:01	Gathering statistics
+2021/10/22 13:47:01	Gathering full-text index stoplists
+2021/10/22 13:47:01	Gathering search property lists
+2021/10/22 13:47:01	Gathering search properties
+2021/10/22 13:47:01	Gathering full-text indexes
+2021/10/22 13:47:01	Gathering column store indexes
+2021/10/22 13:47:01	Gathering spatial indexes
+2021/10/22 13:47:01	Gathering XML indexes
+2021/10/22 13:47:01	Gathering Selective XML indexes
+2021/10/22 13:47:01	Gathering encrypted triggers
+2021/10/22 13:47:01	Gathering triggers
+2021/10/22 13:47:01	Gathering encrypted and clr ddl triggers
+2021/10/22 13:47:01	Gathering ddl triggers
+2021/10/22 13:47:01	Creating edge constraints
+2021/10/22 13:47:01	Gathering synonyms
+2021/10/22 13:47:01	Gathering defaults
+2021/10/22 13:47:01	Gathering data constraint uddt bindings
+2021/10/22 13:47:01	Gathering rules
+2021/10/22 13:47:01	Gathering data constraint uddt bindings
+2021/10/22 13:47:01	Gathering message types
+2021/10/22 13:47:01	Gathering queues
+2021/10/22 13:47:01	Gathering contracts
+2021/10/22 13:47:01	Gathering services
+2021/10/22 13:47:01	Gathering event notifications
+2021/10/22 13:47:01	Gathering remote service bindings
+2021/10/22 13:47:01	Gathering broker priorities
+2021/10/22 13:47:01	Gathering signatures
+2021/10/22 13:47:01	Gathering data compression options
+2021/10/22 13:47:01	Gathering sequence types
+2021/10/22 13:47:01	Gathering security policies
+2021/10/22 13:47:01	Gather column encryption keys
+2021/10/22 13:47:01	Gathering column master keys
+2021/10/22 13:47:01	Gathering external data sources
+2021/10/22 13:47:01	Gathering external file formats
+2021/10/22 13:47:01	Gathering external tables
+2021/10/22 13:47:01	Gathering extended properties
+2021/10/22 13:47:01	Gathering credentials
+2021/10/22 13:47:01	Gathering logins
+2021/10/22 13:47:01	Gathering server audits
+2021/10/22 13:47:02	Scanning project for duplicate elements
+2021/10/22 13:47:03	Finished duplicate element processing
+2021/10/22 13:47:03	Finished importing database.
+2021/10/22 13:47:03	A summary of the import was saved to the following location: C:\Users\isabe\OneDrive\Documents\BBusSci\Semester 2\INF2011S\Project\INF2011S_Group_Project-main\HotelDatabase\Import Schema Logs\HotelDatabase_20211022114655.log
+2021/10/22 13:47:03	Click Finish to continue...

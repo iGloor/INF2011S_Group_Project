@@ -28,7 +28,9 @@ namespace HotelGroupSystem
         private int guestId;
 
         public string duration;
-        public string refNo;
+        public string referenceBuilder;
+
+        public static string bookingRefNo = " ";
 
         #endregion
 
@@ -39,10 +41,58 @@ namespace HotelGroupSystem
         public HomePageForm()
         {
             InitializeComponent();
-            //booking controller
+                       
 
-            
+        }
+        #endregion
 
+        #region Generate Booking Reference
+        // Instantiate random number generator.    
+        private readonly Random _random = new Random();
+
+        // Generates a random number within a range.      
+        public int RandomNumber(int min, int max)
+        {
+            return _random.Next(min, max);
+        }
+
+        // Generates a random string with a given size.    
+        public string RandomString(int size, bool lowerCase = false)
+        {
+            var builder = new StringBuilder(size);
+
+            // The first group containing the uppercase letters and
+            // the second group containing the lowercase.  
+
+            // char is a single Unicode character  
+            char offset = lowerCase ? 'a' : 'A';
+            const int lettersOffset = 26;
+
+            for (var i = 0; i < size; i++)
+            {
+                var @char = (char)_random.Next(offset, offset + lettersOffset);
+                builder.Append(@char);
+            }
+
+            return lowerCase ? builder.ToString().ToLower() : builder.ToString();
+        }
+
+        // Generates a random booking reference.  
+        // 2-LowerCase + 3-Digits + 2-UpperCase  
+        public string BookingRef()
+        {
+            var referenceBuilder = new StringBuilder();
+
+            // 2-Letters lower case   
+            referenceBuilder.Append(RandomString(2, true));
+
+            // 3-Digits between 100 and 999  
+            referenceBuilder.Append(RandomNumber(100, 999));
+
+            // 2-Letters upper case  
+            referenceBuilder.Append(RandomString(2));
+
+            return referenceBuilder.ToString();
         }
         #endregion
 
@@ -54,22 +104,14 @@ namespace HotelGroupSystem
             int stay = Convert.ToInt32(duration);
             decimal total = rooms * rate * stay;
             totalTxt.Text = total.ToString();
-            return total;
-            
+            return total;    
         }
 
-        public string CreateBookingReference()
-        {
-            StringBuilder stringBuilder = new StringBuilder();
-            refNo = stringBuilder.Append(surnameTxt.Text).Append(firstNameTxt.Text).ToString(0, 3);
-            return refNo;
-        }
+       
 
         
         private void PopulateGuestDetails(Guest guest)
         {
-
-
             //check if guest is is database by using id textbox
             if (guest != null)
             {
@@ -110,7 +152,7 @@ namespace HotelGroupSystem
         private Booking StoreBookingDetails()
         {
             Booking booking = new Booking();
-            booking.ReferenceNumber = CreateBookingReference();
+            booking.ReferenceNumber = BookingRef();
             booking.CheckInDate = Convert.ToDateTime(checkInTxt.Text);
             booking.CheckOutDate = Convert.ToDateTime(checkOutTxt.Text);
             booking.RoomRate = Convert.ToDecimal(rateTxt.Text);
@@ -128,15 +170,14 @@ namespace HotelGroupSystem
 
         private void confirmBookingBtn_Click(object sender, EventArgs e)
         {
-            //Save guest to database
+            //Save bookingS to database
             Booking booking = StoreBookingDetails();
-            
 
+            BookingRef();
             //Show message box with reference number
-            MessageBox.Show("Your booking has been saved, your reference number is ...");
-
-            //Save booking details in database
-
+            MessageBox.Show("Your booking has been saved!" + Environment.NewLine + "Your reference number is: " + booking.ReferenceNumber, "Please note", MessageBoxButtons.OK);
+            
+            this.Close();
             //Open booking details form
             bookingDetails = new BookingDetails();
             bookingDetails.Show();
@@ -158,9 +199,7 @@ namespace HotelGroupSystem
             guestId = Convert.ToInt32(guestIdTxt.Text);
             GuestController guestController = new GuestController();
             guest = guestController.Find(guestId);
-            
-            
-
+                        
             PopulateGuestDetails(guest);
 
         }

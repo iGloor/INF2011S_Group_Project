@@ -72,6 +72,7 @@ namespace HotelGroupSystem.Data
                 {
                     booking = new Booking();
                     //Obtain each booking attribute from the specific field in the row in the table
+                    booking.BookingID = Convert.ToInt32(myRow["BookingID"]);
                     booking.GuestId = Convert.ToInt32(myRow["GuestID"]);
                     booking.ReferenceNumber = Convert.ToString(myRow["ReferenceNumber"]);
                     booking.CheckInDate = Convert.ToDateTime(myRow["CheckIn"]);
@@ -82,6 +83,7 @@ namespace HotelGroupSystem.Data
                     booking.DiscountId = Convert.ToInt32(myRow["DiscountID"]);
                     booking.BankName = Convert.ToString(myRow["BankName"]);
                     booking.CreditCardNo = Convert.ToInt32(myRow["CreditCardNumber"]);
+                    booking.PaymentStatus = Convert.ToInt32(myRow["PaymentStatus"]);
                     //add booking to bookings collection
                     bookings.Add(booking);
 
@@ -110,6 +112,7 @@ namespace HotelGroupSystem.Data
             aRow["CheckOut"] = aBooking.CheckOutDate;
             aRow["BankName"] = aBooking.BankName;
             aRow["CreditCardNumber"] = aBooking.CreditCardNo;
+            aRow["PaymentStatus"] = aBooking.PaymentStatus;
 
         }
 
@@ -201,6 +204,9 @@ namespace HotelGroupSystem.Data
 
             param = new SqlParameter("@CreditCardNumber", SqlDbType.Int, 10, "CreditCardNumber");
             daMain.InsertCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@PaymentStatus", SqlDbType.Int, 10, "PaymentStatus");
+            daMain.InsertCommand.Parameters.Add(param);
         }
 
 
@@ -249,6 +255,9 @@ namespace HotelGroupSystem.Data
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
+            param = new SqlParameter("@PaymentStatus", SqlDbType.Int, 10, "PaymentStatus");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
         }
 
         private void Build_DELETE_Parameters()
@@ -294,14 +303,18 @@ namespace HotelGroupSystem.Data
             param = new SqlParameter("@CreditCardNumber", SqlDbType.Int, 10, "CreditCardNumber");
             param.SourceVersion = DataRowVersion.Original;
             daMain.DeleteCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@PaymentStatus", SqlDbType.Int, 10, "PaymentStatus");
+            param.SourceVersion = DataRowVersion.Original;
+            daMain.DeleteCommand.Parameters.Add(param);
         }
 
         private void Create_INSERT_Command(Booking aBooking)
         {
             //Command used to insert values into the Bookings table..
 
-            daMain.InsertCommand = new SqlCommand("INSERT into Booking (GuestID, ReferenceNumber, RoomsBooked, RoomRate, Deposit, CheckIn, CheckOut, BankName, CreditCardNumber, DiscountID)" +
-                " VALUES (@GuestID, @ReferenceNumber, @RoomsBooked, @RoomRate, @Deposit, @CheckIn, @CheckOut, @BankName, @CreditCardNumber, @DiscountID)", cnMain);
+            daMain.InsertCommand = new SqlCommand("INSERT into Booking (GuestID, ReferenceNumber, RoomsBooked, PaymentStatus, RoomRate, Deposit, CheckIn, CheckOut, BankName, CreditCardNumber, DiscountID)" +
+                " VALUES (@GuestID, @ReferenceNumber, @RoomsBooked, @PaymentStatus, @RoomRate, @Deposit, @CheckIn, @CheckOut, @BankName, @CreditCardNumber, @DiscountID)", cnMain);
             Build_INSERT_Parameters(aBooking);
         }
 
@@ -311,7 +324,7 @@ namespace HotelGroupSystem.Data
             //The GuestID and BookingReference cannot be changed
 
             daMain.UpdateCommand = new SqlCommand("UPDATE Booking SET GuestID =@GuestID, ReferenceNumber =@ReferenceNumber, RoomsBooked =@RoomsBooked, RoomRate =@RoomRate, " +
-                "Deposit =@Deposit, CheckIn =@CheckIn, CheckOut =@CheckOut, BankName =@BankName, CreditCardNumber =@CreditCardNumber, DiscountID =@DiscountID " + "WHERE ReferenceNumber = @ReferenceNumber", cnMain);
+                "Deposit =@Deposit, CheckIn =@CheckIn, CheckOut =@CheckOut, BankName =@BankName, PaymentStatus =@PaymentStatus, CreditCardNumber =@CreditCardNumber, DiscountID =@DiscountID " + "WHERE ReferenceNumber = @ReferenceNumber", cnMain);
             Build_UPDATE_Parameters(aBooking);
         }
 

@@ -34,6 +34,7 @@ namespace HotelGroupSystem.Business
 
         //Billing details
         private int creditCardNo;
+        private int paymentStatus;
         private string bankName;
 
         #endregion
@@ -42,6 +43,7 @@ namespace HotelGroupSystem.Business
         public int BookingID
         {
             get { return bookingID; }
+            set { bookingID = value; }
         }
         public string ReferenceNumber
         {
@@ -97,6 +99,11 @@ namespace HotelGroupSystem.Business
             set { creditCardNo = value; }
         }
 
+        public int PaymentStatus
+        {
+            get { return paymentStatus; }
+            set { paymentStatus = value; }
+        }
         public string BankName
         {
             get { return bankName; }
@@ -110,12 +117,13 @@ namespace HotelGroupSystem.Business
         {
 
         }
-        public Booking(int bId, string bRef, int gId, int rooms, decimal rate, decimal total, int discountid, DateTime checkIn, DateTime checkOut, int creditCard, string bName)
+        public Booking(int bId, string bRef, int gId, int rooms, int payStatus, decimal rate, decimal total, int discountid, DateTime checkIn, DateTime checkOut, int creditCard, string bName)
         {
             bookingID = bId;
             referenceNumber = bRef;
             guestId = gId;
             roomsBooked = rooms;
+            paymentStatus = payStatus;
             roomRate = rate;
             deposit = total;
             discountId = discountid;

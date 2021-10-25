@@ -39,6 +39,7 @@ namespace HotelGroupSystem.Presentation
             this.occupancyReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seasonalSummaryReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,7 +59,7 @@ namespace HotelGroupSystem.Presentation
             // availabilityCheckToolStripMenuItem
             // 
             this.availabilityCheckToolStripMenuItem.Name = "availabilityCheckToolStripMenuItem";
-            this.availabilityCheckToolStripMenuItem.Size = new System.Drawing.Size(140, 26);
+            this.availabilityCheckToolStripMenuItem.Size = new System.Drawing.Size(140, 24);
             this.availabilityCheckToolStripMenuItem.Text = "Availability Check";
             this.availabilityCheckToolStripMenuItem.Click += new System.EventHandler(this.availabilityCheckToolStripMenuItem_Click);
             // 
@@ -69,7 +70,7 @@ namespace HotelGroupSystem.Presentation
             this.updateBookingToolStripMenuItem,
             this.makeAnEnquiryToolStripMenuItem});
             this.bookingsToolStripMenuItem.Name = "bookingsToolStripMenuItem";
-            this.bookingsToolStripMenuItem.Size = new System.Drawing.Size(84, 26);
+            this.bookingsToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
             this.bookingsToolStripMenuItem.Text = "Bookings";
             // 
             // newBookingToolStripMenuItem
@@ -99,7 +100,7 @@ namespace HotelGroupSystem.Presentation
             this.occupancyReportToolStripMenuItem,
             this.seasonalSummaryReportToolStripMenuItem});
             this.generateReportToolStripMenuItem.Name = "generateReportToolStripMenuItem";
-            this.generateReportToolStripMenuItem.Size = new System.Drawing.Size(132, 26);
+            this.generateReportToolStripMenuItem.Size = new System.Drawing.Size(132, 24);
             this.generateReportToolStripMenuItem.Text = "Generate Report";
             // 
             // occupancyReportToolStripMenuItem
@@ -118,7 +119,7 @@ namespace HotelGroupSystem.Presentation
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(53, 74);
+            this.monthCalendar1.Location = new System.Drawing.Point(62, 109);
             this.monthCalendar1.MaxDate = new System.DateTime(2021, 12, 31, 0, 0, 0, 0);
             this.monthCalendar1.MaxSelectionCount = 31;
             this.monthCalendar1.MinDate = new System.DateTime(2021, 12, 1, 0, 0, 0, 0);
@@ -126,11 +127,21 @@ namespace HotelGroupSystem.Presentation
             this.monthCalendar1.TabIndex = 1;
             this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged_1);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(76, 80);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(236, 20);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Select dates for occupancy report:";
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 534);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -157,5 +168,6 @@ namespace HotelGroupSystem.Presentation
         private System.Windows.Forms.ToolStripMenuItem makeAnEnquiryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem seasonalSummaryReportToolStripMenuItem;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.Label label1;
     }
 }

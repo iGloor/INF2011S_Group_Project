@@ -1,0 +1,10 @@
+C:\Users\isabe\OneDrive\Documents\BBusSci\Semester 2\INF2011S\Project\INF2011S_Group_Project-main\HotelDatabase\bin\Debug\HotelDatabase.dacpac
+C:\Users\isabe\OneDrive\Documents\BBusSci\Semester 2\INF2011S\Project\INF2011S_Group_Project-main\HotelDatabase\bin\Debug\HotelDatabase.dll
+C:\Users\isabe\OneDrive\Documents\BBusSci\Semester 2\INF2011S\Project\INF2011S_Group_Project-main\HotelDatabase\bin\Debug\HotelDatabase.pdb
+C:\Users\isabe\OneDrive\Documents\BBusSci\Semester 2\INF2011S\Project\INF2011S_Group_Project-main\HotelDatabase\obj\Debug\HotelDatabase.sqlproj.AssemblyReference.cache
+C:\Users\isabe\OneDrive\Documents\BBusSci\Semester 2\INF2011S\Project\INF2011S_Group_Project-main\HotelDatabase\obj\Debug\Model.xml
+C:\Users\isabe\OneDrive\Documents\BBusSci\Semester 2\INF2011S\Project\INF2011S_Group_Project-main\HotelDatabase\obj\Debug\refactor.xml
+C:\Users\isabe\OneDrive\Documents\BBusSci\Semester 2\INF2011S\Project\INF2011S_Group_Project-main\HotelDatabase\obj\Debug\postdeploy.sql
+C:\Users\isabe\OneDrive\Documents\BBusSci\Semester 2\INF2011S\Project\INF2011S_Group_Project-main\HotelDatabase\obj\Debug\predeploy.sql
+C:\Users\isabe\OneDrive\Documents\BBusSci\Semester 2\INF2011S\Project\INF2011S_Group_Project-main\HotelDatabase\obj\Debug\HotelDatabase.dll
+C:\Users\isabe\OneDrive\Documents\BBusSci\Semester 2\INF2011S\Project\INF2011S_Group_Project-main\HotelDatabase\obj\Debug\HotelDatabase.pdb

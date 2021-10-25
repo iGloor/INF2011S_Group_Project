@@ -78,7 +78,7 @@ namespace HotelGroupSystem.Business
                     index = FindIndex(aBooking);  // find the index of the specific booking in collection
                     bookings.RemoveAt(index);  // remove that booking from the collection
                     break;
-
+                    
             }
         }
 
@@ -95,16 +95,28 @@ namespace HotelGroupSystem.Business
         //This method receives a booking ref as a parameter; finds the booking object in the collection of bookings and then returns this object
         public Booking Find(string bookRef)
         {
-            int index = 0;
-            //check if it is the first booking
-          // bool found = (bookings[index].BookingRef= bookRef); 
-            int count = bookings.Count;
-          // while (!(found) && (index < bookings.Count - 1))  //if not "this" booking and you are not at the end of the list 
+            
+            BookingDB bookingDB = new BookingDB();
+            bookings = bookingDB.AllBookings;
+            Booking foundBooking = null;
+            if (bookings.Any(x => x.ReferenceNumber.Equals(bookRef, StringComparison.OrdinalIgnoreCase)))
             {
-                index = index + 1;
-               // found = (bookings[index].BookingRef == bookRef);   // this will be TRUE if found
+                foundBooking = bookings.First(x => x.ReferenceNumber.Equals(bookRef, StringComparison.OrdinalIgnoreCase));
             }
-            return bookings[index];  // this is the one!  
+            return foundBooking;
+        }
+
+        public Booking FindById(int bookingId)
+        {
+
+            BookingDB bookingDB = new BookingDB();
+            bookings = bookingDB.AllBookings;
+            Booking foundBooking = null;
+            if (bookings.Any(x => x.BookingID == bookingId))
+            {
+                foundBooking = bookings.First(x => x.BookingID == bookingId);
+            }
+            return foundBooking;
         }
 
         public int FindIndex(Booking aBooking)

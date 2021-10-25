@@ -34,7 +34,6 @@ namespace HotelGroupSystem.Presentation
             this.refNoLabel = new System.Windows.Forms.Label();
             this.refNumberTxt = new System.Windows.Forms.TextBox();
             this.bookDetailsLabel = new System.Windows.Forms.Label();
-            this.feedbackLabel = new System.Windows.Forms.Label();
             this.roomLabel = new System.Windows.Forms.Label();
             this.rateLabel = new System.Windows.Forms.Label();
             this.checkInLabel = new System.Windows.Forms.Label();
@@ -59,12 +58,17 @@ namespace HotelGroupSystem.Presentation
             this.discountCodeLabel = new System.Windows.Forms.Label();
             this.discountCodeTxt = new System.Windows.Forms.TextBox();
             this.enquireBtn = new System.Windows.Forms.Button();
+            this.bankLabel = new System.Windows.Forms.Label();
+            this.cardNoLabel = new System.Windows.Forms.Label();
+            this.bankTxt = new System.Windows.Forms.TextBox();
+            this.cardTxt = new System.Windows.Forms.TextBox();
+            this.bookingIdTxt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // checkRefNoBtn
             // 
             this.checkRefNoBtn.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkRefNoBtn.Location = new System.Drawing.Point(85, 82);
+            this.checkRefNoBtn.Location = new System.Drawing.Point(57, 86);
             this.checkRefNoBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkRefNoBtn.Name = "checkRefNoBtn";
             this.checkRefNoBtn.Size = new System.Drawing.Size(242, 36);
@@ -96,27 +100,17 @@ namespace HotelGroupSystem.Presentation
             // 
             this.bookDetailsLabel.AutoSize = true;
             this.bookDetailsLabel.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bookDetailsLabel.Location = new System.Drawing.Point(11, 267);
+            this.bookDetailsLabel.Location = new System.Drawing.Point(12, 236);
             this.bookDetailsLabel.Name = "bookDetailsLabel";
             this.bookDetailsLabel.Size = new System.Drawing.Size(123, 19);
             this.bookDetailsLabel.TabIndex = 3;
             this.bookDetailsLabel.Text = "Booking Details:";
             // 
-            // feedbackLabel
-            // 
-            this.feedbackLabel.AutoSize = true;
-            this.feedbackLabel.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.feedbackLabel.Location = new System.Drawing.Point(22, 82);
-            this.feedbackLabel.Name = "feedbackLabel";
-            this.feedbackLabel.Size = new System.Drawing.Size(222, 20);
-            this.feedbackLabel.TabIndex = 4;
-            this.feedbackLabel.Text = "Booking for reference number...";
-            // 
             // roomLabel
             // 
             this.roomLabel.AutoSize = true;
             this.roomLabel.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.roomLabel.Location = new System.Drawing.Point(333, 316);
+            this.roomLabel.Location = new System.Drawing.Point(333, 282);
             this.roomLabel.Name = "roomLabel";
             this.roomLabel.Size = new System.Drawing.Size(55, 20);
             this.roomLabel.TabIndex = 7;
@@ -125,7 +119,7 @@ namespace HotelGroupSystem.Presentation
             // rateLabel
             // 
             this.rateLabel.AutoSize = true;
-            this.rateLabel.Location = new System.Drawing.Point(592, 316);
+            this.rateLabel.Location = new System.Drawing.Point(592, 282);
             this.rateLabel.Name = "rateLabel";
             this.rateLabel.Size = new System.Drawing.Size(83, 20);
             this.rateLabel.TabIndex = 8;
@@ -135,7 +129,7 @@ namespace HotelGroupSystem.Presentation
             // 
             this.checkInLabel.AutoSize = true;
             this.checkInLabel.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkInLabel.Location = new System.Drawing.Point(22, 314);
+            this.checkInLabel.Location = new System.Drawing.Point(22, 282);
             this.checkInLabel.Name = "checkInLabel";
             this.checkInLabel.Size = new System.Drawing.Size(73, 20);
             this.checkInLabel.TabIndex = 9;
@@ -144,7 +138,7 @@ namespace HotelGroupSystem.Presentation
             // totalLabel
             // 
             this.totalLabel.AutoSize = true;
-            this.totalLabel.Location = new System.Drawing.Point(573, 359);
+            this.totalLabel.Location = new System.Drawing.Point(573, 338);
             this.totalLabel.Name = "totalLabel";
             this.totalLabel.Size = new System.Drawing.Size(102, 20);
             this.totalLabel.TabIndex = 10;
@@ -152,7 +146,7 @@ namespace HotelGroupSystem.Presentation
             // 
             // bDetailsUpdateBtn
             // 
-            this.bDetailsUpdateBtn.Location = new System.Drawing.Point(26, 490);
+            this.bDetailsUpdateBtn.Location = new System.Drawing.Point(26, 538);
             this.bDetailsUpdateBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bDetailsUpdateBtn.Name = "bDetailsUpdateBtn";
             this.bDetailsUpdateBtn.Size = new System.Drawing.Size(174, 27);
@@ -163,7 +157,7 @@ namespace HotelGroupSystem.Presentation
             // 
             // deleteBtn
             // 
-            this.deleteBtn.Location = new System.Drawing.Point(260, 490);
+            this.deleteBtn.Location = new System.Drawing.Point(267, 538);
             this.deleteBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(174, 27);
@@ -174,7 +168,7 @@ namespace HotelGroupSystem.Presentation
             // 
             // cancelBtn
             // 
-            this.cancelBtn.Location = new System.Drawing.Point(522, 490);
+            this.cancelBtn.Location = new System.Drawing.Point(525, 538);
             this.cancelBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(174, 27);
@@ -185,7 +179,7 @@ namespace HotelGroupSystem.Presentation
             // 
             // roomTxt
             // 
-            this.roomTxt.Location = new System.Drawing.Point(409, 313);
+            this.roomTxt.Location = new System.Drawing.Point(409, 279);
             this.roomTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.roomTxt.Name = "roomTxt";
             this.roomTxt.Size = new System.Drawing.Size(129, 25);
@@ -193,7 +187,7 @@ namespace HotelGroupSystem.Presentation
             // 
             // rateTxt
             // 
-            this.rateTxt.Location = new System.Drawing.Point(681, 314);
+            this.rateTxt.Location = new System.Drawing.Point(681, 279);
             this.rateTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rateTxt.Name = "rateTxt";
             this.rateTxt.Size = new System.Drawing.Size(100, 25);
@@ -202,7 +196,7 @@ namespace HotelGroupSystem.Presentation
             // checkInTxt
             // 
             this.checkInTxt.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkInTxt.Location = new System.Drawing.Point(144, 309);
+            this.checkInTxt.Location = new System.Drawing.Point(144, 282);
             this.checkInTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkInTxt.Name = "checkInTxt";
             this.checkInTxt.Size = new System.Drawing.Size(116, 25);
@@ -210,7 +204,7 @@ namespace HotelGroupSystem.Presentation
             // 
             // totalTxt
             // 
-            this.totalTxt.Location = new System.Drawing.Point(681, 356);
+            this.totalTxt.Location = new System.Drawing.Point(681, 335);
             this.totalTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.totalTxt.Name = "totalTxt";
             this.totalTxt.Size = new System.Drawing.Size(158, 25);
@@ -218,7 +212,7 @@ namespace HotelGroupSystem.Presentation
             // 
             // checkOutTxt
             // 
-            this.checkOutTxt.Location = new System.Drawing.Point(144, 354);
+            this.checkOutTxt.Location = new System.Drawing.Point(144, 335);
             this.checkOutTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkOutTxt.Name = "checkOutTxt";
             this.checkOutTxt.Size = new System.Drawing.Size(116, 25);
@@ -227,7 +221,7 @@ namespace HotelGroupSystem.Presentation
             // checkOutLabel
             // 
             this.checkOutLabel.AutoSize = true;
-            this.checkOutLabel.Location = new System.Drawing.Point(24, 359);
+            this.checkOutLabel.Location = new System.Drawing.Point(24, 335);
             this.checkOutLabel.Name = "checkOutLabel";
             this.checkOutLabel.Size = new System.Drawing.Size(79, 20);
             this.checkOutLabel.TabIndex = 32;
@@ -236,7 +230,7 @@ namespace HotelGroupSystem.Presentation
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(35, 216);
+            this.nameLabel.Location = new System.Drawing.Point(35, 176);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(49, 20);
             this.nameLabel.TabIndex = 5;
@@ -244,7 +238,7 @@ namespace HotelGroupSystem.Presentation
             // 
             // nameTxt
             // 
-            this.nameTxt.Location = new System.Drawing.Point(144, 213);
+            this.nameTxt.Location = new System.Drawing.Point(144, 171);
             this.nameTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nameTxt.Name = "nameTxt";
             this.nameTxt.Size = new System.Drawing.Size(228, 25);
@@ -252,7 +246,7 @@ namespace HotelGroupSystem.Presentation
             // 
             // idTxt
             // 
-            this.idTxt.Location = new System.Drawing.Point(144, 171);
+            this.idTxt.Location = new System.Drawing.Point(144, 133);
             this.idTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.idTxt.Name = "idTxt";
             this.idTxt.Size = new System.Drawing.Size(155, 25);
@@ -261,7 +255,7 @@ namespace HotelGroupSystem.Presentation
             // idLabel
             // 
             this.idLabel.AutoSize = true;
-            this.idLabel.Location = new System.Drawing.Point(35, 171);
+            this.idLabel.Location = new System.Drawing.Point(35, 136);
             this.idLabel.Name = "idLabel";
             this.idLabel.Size = new System.Drawing.Size(24, 20);
             this.idLabel.TabIndex = 33;
@@ -271,7 +265,7 @@ namespace HotelGroupSystem.Presentation
             // 
             this.gDetailsLabel.AutoSize = true;
             this.gDetailsLabel.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gDetailsLabel.Location = new System.Drawing.Point(24, 131);
+            this.gDetailsLabel.Location = new System.Drawing.Point(24, 103);
             this.gDetailsLabel.Name = "gDetailsLabel";
             this.gDetailsLabel.Size = new System.Drawing.Size(106, 19);
             this.gDetailsLabel.TabIndex = 11;
@@ -279,7 +273,7 @@ namespace HotelGroupSystem.Presentation
             // 
             // checkDatesBtn
             // 
-            this.checkDatesBtn.Location = new System.Drawing.Point(144, 402);
+            this.checkDatesBtn.Location = new System.Drawing.Point(144, 383);
             this.checkDatesBtn.Name = "checkDatesBtn";
             this.checkDatesBtn.Size = new System.Drawing.Size(147, 28);
             this.checkDatesBtn.TabIndex = 35;
@@ -289,7 +283,7 @@ namespace HotelGroupSystem.Presentation
             // 
             // calculateAmountBtn
             // 
-            this.calculateAmountBtn.Location = new System.Drawing.Point(419, 402);
+            this.calculateAmountBtn.Location = new System.Drawing.Point(409, 383);
             this.calculateAmountBtn.Name = "calculateAmountBtn";
             this.calculateAmountBtn.Size = new System.Drawing.Size(158, 28);
             this.calculateAmountBtn.TabIndex = 36;
@@ -300,7 +294,7 @@ namespace HotelGroupSystem.Presentation
             // discountCodeLabel
             // 
             this.discountCodeLabel.AutoSize = true;
-            this.discountCodeLabel.Location = new System.Drawing.Point(280, 359);
+            this.discountCodeLabel.Location = new System.Drawing.Point(280, 338);
             this.discountCodeLabel.Name = "discountCodeLabel";
             this.discountCodeLabel.Size = new System.Drawing.Size(108, 20);
             this.discountCodeLabel.TabIndex = 37;
@@ -308,14 +302,14 @@ namespace HotelGroupSystem.Presentation
             // 
             // discountCodeTxt
             // 
-            this.discountCodeTxt.Location = new System.Drawing.Point(409, 356);
+            this.discountCodeTxt.Location = new System.Drawing.Point(409, 332);
             this.discountCodeTxt.Name = "discountCodeTxt";
             this.discountCodeTxt.Size = new System.Drawing.Size(129, 25);
             this.discountCodeTxt.TabIndex = 38;
             // 
             // enquireBtn
             // 
-            this.enquireBtn.Location = new System.Drawing.Point(373, 82);
+            this.enquireBtn.Location = new System.Drawing.Point(370, 86);
             this.enquireBtn.Name = "enquireBtn";
             this.enquireBtn.Size = new System.Drawing.Size(242, 36);
             this.enquireBtn.TabIndex = 39;
@@ -323,11 +317,55 @@ namespace HotelGroupSystem.Presentation
             this.enquireBtn.UseVisualStyleBackColor = true;
             this.enquireBtn.Click += new System.EventHandler(this.enquireBtn_Click);
             // 
+            // bankLabel
+            // 
+            this.bankLabel.AutoSize = true;
+            this.bankLabel.Location = new System.Drawing.Point(24, 433);
+            this.bankLabel.Name = "bankLabel";
+            this.bankLabel.Size = new System.Drawing.Size(87, 20);
+            this.bankLabel.TabIndex = 40;
+            this.bankLabel.Text = "Bank Name";
+            // 
+            // cardNoLabel
+            // 
+            this.cardNoLabel.AutoSize = true;
+            this.cardNoLabel.Location = new System.Drawing.Point(24, 486);
+            this.cardNoLabel.Name = "cardNoLabel";
+            this.cardNoLabel.Size = new System.Drawing.Size(143, 20);
+            this.cardNoLabel.TabIndex = 41;
+            this.cardNoLabel.Text = "Credit Card Number";
+            // 
+            // bankTxt
+            // 
+            this.bankTxt.Location = new System.Drawing.Point(199, 433);
+            this.bankTxt.Name = "bankTxt";
+            this.bankTxt.Size = new System.Drawing.Size(189, 25);
+            this.bankTxt.TabIndex = 42;
+            // 
+            // cardTxt
+            // 
+            this.cardTxt.Location = new System.Drawing.Point(199, 483);
+            this.cardTxt.Name = "cardTxt";
+            this.cardTxt.Size = new System.Drawing.Size(189, 25);
+            this.cardTxt.TabIndex = 43;
+            // 
+            // bookingIdTxt
+            // 
+            this.bookingIdTxt.Location = new System.Drawing.Point(701, 43);
+            this.bookingIdTxt.Name = "bookingIdTxt";
+            this.bookingIdTxt.Size = new System.Drawing.Size(100, 25);
+            this.bookingIdTxt.TabIndex = 44;
+            // 
             // UpdateBookingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(851, 610);
+            this.Controls.Add(this.bookingIdTxt);
+            this.Controls.Add(this.cardTxt);
+            this.Controls.Add(this.bankTxt);
+            this.Controls.Add(this.cardNoLabel);
+            this.Controls.Add(this.bankLabel);
             this.Controls.Add(this.enquireBtn);
             this.Controls.Add(this.discountCodeTxt);
             this.Controls.Add(this.discountCodeLabel);
@@ -351,7 +389,6 @@ namespace HotelGroupSystem.Presentation
             this.Controls.Add(this.rateLabel);
             this.Controls.Add(this.roomLabel);
             this.Controls.Add(this.nameLabel);
-            this.Controls.Add(this.feedbackLabel);
             this.Controls.Add(this.bookDetailsLabel);
             this.Controls.Add(this.refNumberTxt);
             this.Controls.Add(this.refNoLabel);
@@ -373,7 +410,6 @@ namespace HotelGroupSystem.Presentation
         private System.Windows.Forms.Label refNoLabel;
         private System.Windows.Forms.TextBox refNumberTxt;
         private System.Windows.Forms.Label bookDetailsLabel;
-        private System.Windows.Forms.Label feedbackLabel;
         private System.Windows.Forms.Label roomLabel;
         private System.Windows.Forms.Label rateLabel;
         private System.Windows.Forms.Label checkInLabel;
@@ -398,5 +434,10 @@ namespace HotelGroupSystem.Presentation
         private System.Windows.Forms.Label discountCodeLabel;
         private System.Windows.Forms.TextBox discountCodeTxt;
         private System.Windows.Forms.Button enquireBtn;
+        private System.Windows.Forms.Label bankLabel;
+        private System.Windows.Forms.Label cardNoLabel;
+        private System.Windows.Forms.TextBox bankTxt;
+        private System.Windows.Forms.TextBox cardTxt;
+        private System.Windows.Forms.TextBox bookingIdTxt;
     }
 }
