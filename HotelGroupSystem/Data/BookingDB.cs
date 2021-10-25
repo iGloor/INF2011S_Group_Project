@@ -372,6 +372,14 @@ namespace HotelGroupSystem.Data
             success = UpdateDataSource(sqlLocal1, table1);
             return success;
         }
+        
+        public bool DeleteBookingDataSource(Booking booking)
+        {
+            bool success = true;
+            Create_DELETE_Command(booking);
+            success = UpdateDataSource(sqlLocal1, table1);
+            return success;
+        }
 
         #endregion
     }

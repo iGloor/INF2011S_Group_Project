@@ -190,7 +190,8 @@ namespace HotelGroupSystem.Presentation
 
         private void checkBtn_Click(object sender, EventArgs e)
         {
-            
+            minimumRoomAmount = -1;
+
             checkInDate = monthCalendar1.SelectionStart.Date;
             checkOutDate = monthCalendar1.SelectionEnd.Date;
 

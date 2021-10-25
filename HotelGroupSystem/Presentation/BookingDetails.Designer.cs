@@ -35,6 +35,7 @@ namespace HotelGroupSystem.Presentation
             this.faxRadBtn = new System.Windows.Forms.RadioButton();
             this.emailRadBtn = new System.Windows.Forms.RadioButton();
             this.postRadBtn = new System.Windows.Forms.RadioButton();
+            this.closeBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -54,6 +55,7 @@ namespace HotelGroupSystem.Presentation
             this.refNoLabel.Size = new System.Drawing.Size(46, 17);
             this.refNoLabel.TabIndex = 1;
             this.refNoLabel.Text = "label2";
+            this.refNoLabel.Click += new System.EventHandler(this.refNoLabel_Click);
             // 
             // printBtn
             // 
@@ -98,11 +100,22 @@ namespace HotelGroupSystem.Presentation
             this.postRadBtn.Text = "Post";
             this.postRadBtn.UseVisualStyleBackColor = true;
             // 
+            // closeBtn
+            // 
+            this.closeBtn.Location = new System.Drawing.Point(320, 222);
+            this.closeBtn.Name = "closeBtn";
+            this.closeBtn.Size = new System.Drawing.Size(127, 36);
+            this.closeBtn.TabIndex = 7;
+            this.closeBtn.Text = "Close";
+            this.closeBtn.UseVisualStyleBackColor = true;
+            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
+            // 
             // BookingDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(633, 366);
+            this.Controls.Add(this.closeBtn);
             this.Controls.Add(this.postRadBtn);
             this.Controls.Add(this.emailRadBtn);
             this.Controls.Add(this.faxRadBtn);
@@ -126,5 +139,6 @@ namespace HotelGroupSystem.Presentation
         private System.Windows.Forms.RadioButton faxRadBtn;
         private System.Windows.Forms.RadioButton emailRadBtn;
         private System.Windows.Forms.RadioButton postRadBtn;
+        private System.Windows.Forms.Button closeBtn;
     }
 }

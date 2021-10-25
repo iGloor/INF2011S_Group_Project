@@ -26,7 +26,8 @@ namespace HotelGroupSystem.Presentation
 
         private string referenceNo;
 
-        public static string setBookingId = " ";
+        public static int setBookingId = 0;
+        public static string referenceNumber = " ";
 
         public static int formState = 0;
             
@@ -192,6 +193,7 @@ namespace HotelGroupSystem.Presentation
 
         private void UpdateBookingForm_Load(object sender, EventArgs e)
         {
+            setBookingId = 0;
             if (formState == 1)
             {
                 checkInTxt.Text = AvailabilityCheckForm.setValueForCheckIn;
@@ -237,6 +239,7 @@ namespace HotelGroupSystem.Presentation
 
         private void UpdateBookingForm_Activated(object sender, EventArgs e)
         {
+            setBookingId = 0;
             if (formState == 1)
             {
                 checkInTxt.Text = AvailabilityCheckForm.setValueForCheckIn;
@@ -246,6 +249,7 @@ namespace HotelGroupSystem.Presentation
                 duration = AvailabilityCheckForm.setValueForDuration;
                 formState = 0;
             }
+
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
@@ -256,19 +260,30 @@ namespace HotelGroupSystem.Presentation
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            //Delete from database
+            Booking booking = StoreBookingDetails();
 
+            DialogResult result = MessageBox.Show("Are you sure you want to cancel booking?", "Cancel Booking", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                BookingController bookingController = new BookingController();
+                bookingController.DeleteBooking(booking);
+                this.Close();
+            }
         }
 
         private void bDetailsUpdateBtn_Click(object sender, EventArgs e)
         {
             //Update booking in database
             Booking booking = StoreBookingDetails();
-
-            setBookingId = bookingIdTxt.Text;
             
+            setBookingId = booking.BookingID;
+            referenceNumber = booking.ReferenceNumber;
+
+            BookingCalendarController bookingCalendarController = new BookingCalendarController();
+            bookingCalendarController.RecordCalendarReservationsForBooking(booking.BookingID);
+
             this.Close();
-            //Open booking details form
+                //Open booking details form
             bookingDetails = new BookingDetails();
             bookingDetails.Show();
         }

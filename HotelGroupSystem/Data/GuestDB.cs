@@ -185,9 +185,6 @@ namespace HotelGroupSystem.Data
 
             param = new SqlParameter("@GuestID", SqlDbType.Int, 10, "GuestID");
             daMain.SelectCommand.Parameters.Add(param);
-
-          
-
         }
 
         private void Build_UPDATE_Parameters(Guest aGuest)

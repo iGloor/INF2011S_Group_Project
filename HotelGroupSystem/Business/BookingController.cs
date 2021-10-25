@@ -14,6 +14,8 @@ namespace HotelGroupSystem.Business
         #region Data Members
         BookingDB bookingDB;
         Collection<Booking> bookings;
+
+        public static int currentBookingId;
         #endregion
 
         #region Properties
@@ -54,9 +56,23 @@ namespace HotelGroupSystem.Business
             bookingDB.RetrieveAllBookings();
             bookings = bookingDB.AllBookings;
             booking = bookings.First(x => x.ReferenceNumber == booking.ReferenceNumber);
+            currentBookingId = booking.BookingID;
             return booking;
         }
-        
+
+        public void DeleteBooking(Booking booking)
+        {
+            bookingDB = new BookingDB();
+            bookings = bookingDB.AllBookings;
+
+            if (!(booking.BookingID == 0))
+            {
+                bookingDB.DataSetChange(booking, DB.DBOperation.Delete);
+                bookingDB.DeleteBookingDataSource(booking);
+            }
+            
+        }
+
 
         public void DataMaintenance(Booking aBooking, DB.DBOperation operation)
         {
@@ -102,12 +118,28 @@ namespace HotelGroupSystem.Business
             if (bookings.Any(x => x.ReferenceNumber.Equals(bookRef, StringComparison.OrdinalIgnoreCase)))
             {
                 foundBooking = bookings.First(x => x.ReferenceNumber.Equals(bookRef, StringComparison.OrdinalIgnoreCase));
+                currentBookingId = foundBooking.BookingID;
             }
             return foundBooking;
         }
 
         public Booking FindById(int bookingId)
         {
+
+            BookingDB bookingDB = new BookingDB();
+            bookings = bookingDB.AllBookings;
+            Booking foundBooking = null;
+            if (bookings.Any(x => x.BookingID == bookingId))
+            {
+                foundBooking = bookings.First(x => x.BookingID == bookingId);
+                currentBookingId = foundBooking.BookingID;
+            }
+            return foundBooking;
+        }
+
+        public Booking FindByCurrentBookingId()
+        {
+            int bookingId = currentBookingId;
 
             BookingDB bookingDB = new BookingDB();
             bookings = bookingDB.AllBookings;

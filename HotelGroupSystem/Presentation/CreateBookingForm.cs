@@ -30,6 +30,8 @@ namespace HotelGroupSystem
         public string duration;
         public string referenceBuilder;
 
+        public static int setBookingId;
+
         public static string bookingRefNo = " ";
 
         #endregion
@@ -172,11 +174,18 @@ namespace HotelGroupSystem
         {
             //Save bookingS to database
             Booking booking = StoreBookingDetails();
+           
+            setBookingId = booking.BookingID;
+            //referenceNumber = booking.ReferenceNumber;
+
+            BookingCalendarController bookingCalendarController = new BookingCalendarController();
+            bookingCalendarController.RecordCalendarReservationsForBooking(booking.BookingID);
+
 
             BookingRef();
             //Show message box with reference number
             MessageBox.Show("Your booking has been saved!" + Environment.NewLine + "Your reference number is: " + booking.ReferenceNumber, "Please note", MessageBoxButtons.OK);
-            
+
             this.Close();
             //Open booking details form
             bookingDetails = new BookingDetails();
@@ -221,6 +230,7 @@ namespace HotelGroupSystem
 
         private void HomePageForm_Load(object sender, EventArgs e)
         {
+            setBookingId = 0;
             checkInTxt.Text = AvailabilityCheckForm.setValueForCheckIn;
             checkOutTxt.Text = AvailabilityCheckForm.setValueForCheckOut;
             roomTxt.Text = AvailabilityCheckForm.setValueForRooms;
@@ -230,6 +240,7 @@ namespace HotelGroupSystem
 
         private void HomePageForm_Activated(object sender, EventArgs e)
         {
+            setBookingId = 0;
             checkInTxt.Text = AvailabilityCheckForm.setValueForCheckIn;
             checkOutTxt.Text = AvailabilityCheckForm.setValueForCheckOut;
             roomTxt.Text = AvailabilityCheckForm.setValueForRooms;

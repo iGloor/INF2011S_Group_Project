@@ -18,6 +18,9 @@ namespace HotelGroupSystem.Business
         CalendarDB calendarDB;
         Collection<BookingCalendar> allBookingCalendars;
 
+        CalendarDB bookingCalendarDB;
+        Collection<BookingCalendar> bookingCalendars;
+
         #endregion
 
         #region Properties
@@ -43,6 +46,62 @@ namespace HotelGroupSystem.Business
         #endregion
 
         #region Methods
+        public void UpdateBookingCalendar(Booking booking)
+        {
+            BookingDB bookingDB = new BookingDB();
+            bookingDB.DataSetChange(booking, DB.DBOperation.Update);
+            bookingDB.UpdateBookingDataSource(booking);
+        }
+        public void RecordCalendarReservationsForBooking(int boookingId)
+        {
+            int assignedBookingCount = 0;
+            bookingCalendarDB = new CalendarDB();
+            bookingCalendars = bookingCalendarDB.AllBookingCalendar;
+
+            BookingController bookingController = new BookingController();
+            Booking booking = bookingController.FindById(boookingId);
+
+            foreach (BookingCalendar bookingCalendar in allBookingCalendars)
+            {
+                if (bookingCalendar.BookingID == booking.BookingID)
+                {
+                    bookingCalendar.BookingID = 0;
+                    UpdateBookingCalendar(bookingCalendar);
+                }
+            }
+            int dateCounter = booking.CheckOutDate.Subtract(booking.CheckInDate).Days; 
+            int roomCounter = booking.RoomsBooked - 1;
+
+            for (int i = 0; i < dateCounter; i++)
+            {
+                assignedBookingCount = 0;
+                foreach (BookingCalendar bookingCalendar in allBookingCalendars)
+                {
+                      if ((bookingCalendar.CalendarDate == booking.CheckInDate.AddDays(i))
+                            && (bookingCalendar.BookingID == 0)
+                            && (assignedBookingCount < booking.RoomsBooked))
+                      {
+                        assignedBookingCount++;
+                        bookingCalendar.BookingID = booking.BookingID;
+                        UpdateBookingCalendar(bookingCalendar);
+                      }
+                }
+            }
+
+           
+            bookingCalendarDB.RetrieveAllBookingCalendar();
+            bookingCalendars = bookingCalendarDB.AllBookingCalendar;
+           // bookingCalendar = guests.First(x => x.Surname == guest.Surname && x.FirstName == guest.FirstName);
+           
+        }
+
+        public void UpdateBookingCalendar(BookingCalendar bookingCalendar)
+        {
+            bookingCalendarDB.DataSetChange(bookingCalendar, DB.DBOperation.Update);
+            bookingCalendarDB.UpdateBookingCalendarDataSource(bookingCalendar);
+        }
+
+
         public List<AvailableRooms> GetRoomOccupancy(DateTime checkIn, DateTime checkOut)
         {
             List<AvailableRooms> occupancyReportList = null;
@@ -53,7 +112,7 @@ namespace HotelGroupSystem.Business
 
                 foreach (BookingCalendar bookingCalendar in allBookingCalendars)
                 {
-                    if ((bookingCalendar.CalendarDate >= checkIn) && (bookingCalendar.CalendarDate <= checkOut))
+                    if ((bookingCalendar.CalendarDate >= checkIn) && (bookingCalendar.CalendarDate < checkOut))
                     {
                         if (!(occupancyReportList.Any(x => x.CalendarDate == bookingCalendar.CalendarDate)))
                         {
@@ -84,7 +143,7 @@ namespace HotelGroupSystem.Business
                 
                 foreach(BookingCalendar bookingCalendar in allBookingCalendars)
                 {
-                    if((bookingCalendar.CalendarDate >= checkIn) && (bookingCalendar.CalendarDate <= checkOut))
+                    if((bookingCalendar.CalendarDate >= checkIn) && (bookingCalendar.CalendarDate < checkOut))
                     {
                         if (!(allAvailableRooms.Any(x => x.CalendarDate == bookingCalendar.CalendarDate)))
                         {
